@@ -13,16 +13,16 @@ jobs:
       - uses: actions/setup-node@master
       # - name: Copy .env
       #   run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-      - name: Install Dependencies
-        run: composer update
+      # - name: Install Dependencies
+      #   run: composer update
       # - name: Generate key
       #   run:  php artisan key:generate
       #- name: Populate database 
       #   run: php artisan migrate
       # - name: Generate storage link
       #   run: php artisan storage:link
-      - name: Generate databade factory records
-        run: php artisan migrate:fresh  --force
+      # - name: Generate databade factory records
+      #   run: php artisan migrate:fresh  --force
       # - name: Directory Permissions
       #   run: chmod -R 777 storage bootstrap/cache
       - name: 📂 Sync files
