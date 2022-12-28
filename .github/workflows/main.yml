@@ -19,10 +19,21 @@ jobs:
         
       - name: Generate key
         run:  php artisan key:generate
-      - name: Install npm
-        run: npm install
-      - name: Run npm
-        run: npm run dev 
+      - name: Use Node.js 12
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: "12"
+      - name: ci run build
+        run: |
+          npm ci
+          npm install
+      deploy:
+        needs: build-test
+        runs-on: ubuntu-latest
+      # - name: Install npm
+      #   run: npm install
+      # - name: Run npm
+      #   run: npm run dev 
       #- name: Populate database 
       #   run: php artisan migrate
       # - name: Generate storage link
