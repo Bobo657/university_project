@@ -5,12 +5,16 @@ on:
       - master
 jobs:
   build-test:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}-latest
+    strategy:
+      matrix:
+        os: [ubuntu, windows]
+        node-version: [12.x, 14.x, 16.x]
     steps:
       - uses: shivammathur/setup-php@v2
         with:
           php-version: "8.1"
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.ci', '.env');"
       - name: Install composer dependencies
@@ -18,7 +22,7 @@ jobs:
       - name: Use Node.js 12
         uses: actions/setup-node@v2-beta
         with:
-          node-version: "12"
+          node-version: ${{ matrix.node-version }}
       - name: ci run build
         run: |
           npm ci
