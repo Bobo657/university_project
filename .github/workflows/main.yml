@@ -26,7 +26,6 @@ jobs:
       - name: ci run build
         run: |
           npm ci
-          npm install
           npm run build
         # env:
         #   CI: false
