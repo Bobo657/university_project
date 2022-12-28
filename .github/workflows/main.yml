@@ -8,8 +8,8 @@ jobs:
     runs-on: ${{ matrix.os }}-latest
     strategy:
       matrix:
-        os: [ubuntu, windows]
-        node-version: [12.x, 14.x, 16.x]
+        os: [ubuntu]
+        node-version: [16.x]
     steps:
       - uses: shivammathur/setup-php@v2
         with:
