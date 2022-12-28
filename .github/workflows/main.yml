@@ -24,7 +24,7 @@ jobs:
           node-version: "12"
       - name: ci run build
         run: |
-          npm ci
+          npm install
           npm run build
   deploy:
     needs: build-test
