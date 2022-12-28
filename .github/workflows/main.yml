@@ -19,7 +19,7 @@ jobs:
         
       - name: Generate key
         run:  php artisan key:generate
-      - name: Use Node.js 12
+        - name: Use Node.js 12
         uses: actions/setup-node@v2-beta
         with:
           node-version: "12"
@@ -27,9 +27,7 @@ jobs:
         run: |
           npm ci
           npm install
-      deploy:
-        needs: build-test
-        runs-on: ubuntu-latest
+    
       # - name: Install npm
       #   run: npm install
       # - name: Run npm
@@ -50,3 +48,6 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
           server-dir: /
+    deploy:
+      needs: build-test
+      runs-on: ubuntu-latest
