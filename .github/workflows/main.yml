@@ -22,7 +22,7 @@ jobs:
       - name: Install npm
         run: npm install
       - name: Run npm
-        run: npm run build
+        run: npm run production 
       #- name: Populate database 
       #   run: php artisan migrate
       # - name: Generate storage link
