@@ -1,25 +1,17 @@
-name: Deploy Laravel Project on push
-on:
-  push:
-    branches:
-      - master
 jobs:
-  web-deploy:
-    name: Deploy
+  build-test:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Get the latest code
-        uses: actions/checkout@v3.2.0
-      - uses: actions/setup-node@master
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.1"
+      - uses: actions/checkout@v2
       - name: Copy .env
-        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-      - name: Install Dependencies
-        #run: composer update
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
-        
-      - name: Generate key
-        run:  php artisan key:generate
-        - name: Use Node.js 12
+        run: php -r "file_exists('.env') || copy('.env.ci', '.env');"
+      - name: Install composer dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      - name: Use Node.js 12
         uses: actions/setup-node@v2-beta
         with:
           node-version: "12"
@@ -27,27 +19,16 @@ jobs:
         run: |
           npm ci
           npm install
-    
-      # - name: Install npm
-      #   run: npm install
-      # - name: Run npm
-      #   run: npm run dev 
-      #- name: Populate database 
-      #   run: php artisan migrate
-      # - name: Generate storage link
-      #   run: php artisan storage:link
-      # - name: Generate databade factory records
-      #   run: php artisan migrate:fresh  --force
-      # - name: Directory Permissions
-      #   run: chmod -R 777 storage bootstrap/cache
-      - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@4.3.3
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          port: 21
-          server-dir: /
-    deploy:
-      needs: build-test
-      runs-on: ubuntu-latest
+  deploy:
+    needs: build-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: deploy-staging
+        uses: SamKirkland/FTP-Deploy-Action@2.0.0
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+
+  
