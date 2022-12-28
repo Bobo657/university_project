@@ -38,7 +38,7 @@ jobs:
           DB_DATABASE : stormzjg_bobby
           DB_USERNAME : stormzjg_bobby
           DB_PASSWORD : EA^Pt5p$xKsI
-        run: php artisan migrate:fresh --seed
+        run: php artisan migrate:fresh --seed --force
   deploy:
     needs: build-test
     runs-on: ubuntu-latest
