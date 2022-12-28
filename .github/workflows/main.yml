@@ -24,6 +24,7 @@ jobs:
         run: |
           npm ci
           npm install
+          npm run build
   deploy:
     needs: build-test
     runs-on: ubuntu-latest
