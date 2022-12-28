@@ -30,15 +30,6 @@ jobs:
           npm run build
         env:
           CI: false
-      - name: Execute tests (Unit and Feature tests) via PHPUnit
-        env:
-          DB_CONNECTION : mysql
-          DB_HOST : 127.0.0.1
-          DB_PORT : 3306
-          DB_DATABASE : stormzjg_bobby
-          DB_USERNAME : stormzjg_bobby
-          DB_PASSWORD : EA^Pt5p$xKsI
-        run: php artisan migrate:fresh --seed --force
   deploy:
     needs: build-test
     runs-on: ubuntu-latest
