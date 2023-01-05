@@ -23,6 +23,7 @@ return new class () extends Migration {
             $table->string('email')->unique();
             $table->string('address');
             $table->string('dob');
+            $table->boolean('graduated')->default(false);
             $table->boolean('is_active')->default(false);
             $table->boolean('is_admin')->default(false);
             $table->string('hobby');

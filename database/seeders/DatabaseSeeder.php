@@ -40,58 +40,58 @@ class DatabaseSeeder extends Seeder
         });
 
 
-        Office::factory()
-        ->count(4)
-        ->state(new Sequence(
-            ['name' => 'President'],
-            ['name' => 'Vice President'],
-            ['name' => 'Social'],
-            ['name' => 'Games'],
-        ))
-        ->create()
-        ->each(function ($office) {
-            $no = random_int(2, 5);
-            Contestant::factory()
-            ->count($no)
-            ->create([
-                'contestantable_type' => 'office',
-                'user_id' => random_int(1, 100),
-                'contestantable_id' => $office->id
-            ])
-            ->each(function ($contestant) {
-                $no = random_int(40, 100);
-                Vote::factory()->count($no)->create([
-                    'contestant_id' => $contestant->id
-                ]);
-            });
-        });
+        // Office::factory()
+        // ->count(4)
+        // ->state(new Sequence(
+        //     ['name' => 'President'],
+        //     ['name' => 'Vice President'],
+        //     ['name' => 'Social'],
+        //     ['name' => 'Games'],
+        // ))
+        // ->create()
+        // ->each(function ($office) {
+        //     $no = random_int(2, 5);
+        //     Contestant::factory()
+        //     ->count($no)
+        //     ->create([
+        //         'contestantable_type' => 'office',
+        //         'user_id' => random_int(1, 100),
+        //         'contestantable_id' => $office->id
+        //     ])
+        //     ->each(function ($contestant) {
+        //         $no = random_int(40, 100);
+        //         Vote::factory()->count($no)->create([
+        //             'contestant_id' => $contestant->id
+        //         ]);
+        //     });
+        // });
 
 
 
 
-        Award::factory()
-        ->count(3)
-        ->state(new Sequence(
-            ['name' => 'Best Dress'],
-            ['name' => 'Mr Popular'],
-            ['name' => 'Best Couple'],
-        ))
-        ->create()
-        ->each(function ($award) {
-            $no = random_int(2, 5);
-            Contestant::factory()
-            ->count($no)
-            ->create([
-                'contestantable_type' => 'award',
-                'user_id' => random_int(1, 100),
-                'contestantable_id' => $award->id
-            ])
-            ->each(function ($contestant) {
-                $no = random_int(40, 100);
-                Vote::factory()->count($no)->create([
-                    'contestant_id' => $contestant->id
-                ]);
-            });
-        });
+        // Award::factory()
+        // ->count(3)
+        // ->state(new Sequence(
+        //     ['name' => 'Best Dress'],
+        //     ['name' => 'Mr Popular'],
+        //     ['name' => 'Best Couple'],
+        // ))
+        // ->create()
+        // ->each(function ($award) {
+        //     $no = random_int(2, 5);
+        //     Contestant::factory()
+        //     ->count($no)
+        //     ->create([
+        //         'contestantable_type' => 'award',
+        //         'user_id' => random_int(1, 100),
+        //         'contestantable_id' => $award->id
+        //     ])
+        //     ->each(function ($contestant) {
+        //         $no = random_int(40, 100);
+        //         Vote::factory()->count($no)->create([
+        //             'contestant_id' => $contestant->id
+        //         ]);
+        //     });
+        // });
     }
 }

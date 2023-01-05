@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Livewire\Award\Dashboard;
+use App\Http\Livewire\Students\{RegisteredStudents,AcademicRecords};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('students/registered', RegisteredStudents::class)->name('registered.students');
+Route::get('students/academic/records', AcademicRecords::class)->name('academic.records');
+Route::get('students/awards/dashboard', Dashboard::class)->name('awards.dashboard');
 
 Route::middleware([
     'auth:sanctum',

@@ -169,15 +169,6 @@
                   alt="logo"
                 />
                 <span>Google</span>
-              </button>
-              
-                <img
-                  class="h-5.5 w-5.5"
-                  src="images/logos/github.svg"
-                  alt="logo"
-                />
-                <span>Github</span>
-              </button>
             </div>
           </div>
           <div

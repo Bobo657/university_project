@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class AcademicSession extends Model
 {
     use HasFactory;
+
+    public function scopeCurrent($query)
+    {
+        return $query->orderBy('id', 'desc')->first();
+    }
 }

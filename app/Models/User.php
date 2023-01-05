@@ -36,10 +36,16 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $hidden = [
+        'first_name',
+        'middle_name',
+        'last_name',
+        'gender',
+        'dob',
+        'phone',
+        'address',
         'password',
-        'remember_token',
-        'two_factor_recovery_codes',
-        'two_factor_secret',
+        'reg_no',
+        'email',
     ];
 
     /**
@@ -70,5 +76,25 @@ class User extends Authenticatable implements MustVerifyEmail
         return Attribute::make(
             get: fn ($value) => ucfirst($value),
         );
+    }
+
+    public function academic_records()
+    {
+        return $this->hasMany(AcademicRecord::class);
+    }
+
+    public function current_level()
+    {
+        return $this->hasOne(AcademicRecord::class)->latestOfMany();
+    }
+
+    public function unpaid_dues()
+    {
+        return $this->hasMany(AcademicRecord::class)->where('paid', false);
+    }
+
+    public function award_contested()
+    {
+        return $this->hasMany(Contestant::class)->where('contestantable_type', 'award');
     }
 }
