@@ -9,7 +9,7 @@
           <a href="/">
             <img
               class="h-11 w-11 transition-transform duration-500 ease-in-out hover:rotate-[360deg]"
-              src="images/app-logo.svg"
+              src="/images/app-logo.svg"
               alt="logo"
             />
           </a>
@@ -19,9 +19,9 @@
         <div class="is-scrollbar-hidden flex grow flex-col space-y-4 overflow-y-auto pt-6">
           <!-- Dashobards -->
           <a
-            href="dashboards-crm-analytics.html"
+            href="/"
             class="flex h-11 w-11 items-center justify-center rounded-lg outline-none transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-            x-tooltip.placement.right="'Dashboards'">
+            x-tooltip.placement.right="Dashboard">
             <svg
               class="h-7 w-7"
               xmlns="http://www.w3.org/2000/svg"
@@ -48,12 +48,8 @@
             </svg>
           </a>
 
-          <!-- Apps -->
-          <a
-            href="apps-list.html"
-            class="flex h-11 w-11 items-center justify-center rounded-lg outline-none transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-            x-tooltip.placement.right="'Applications'"
-          >
+          <!-- registered.students -->
+          <a href="{{ route('registered.students') }}" class="flex h-11 w-11 items-center justify-center rounded-lg outline-none transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25" x-tooltip.placement.right="Students">
             <svg
               class="h-7 w-7"
               viewBox="0 0 24 24"
@@ -91,12 +87,8 @@
             </svg>
           </a>
 
-          <!-- Pages And Layouts -->
-          <a
-            href="pages-card-user-1.html"
-            class="flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 text-primary outline-none transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:bg-navy-600 dark:text-accent-light dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
-            x-tooltip.placement.right="'Pages & Layouts'"
-          >
+          <!--academic.records -->
+          <a href="{{ route('academic.records') }}" class="flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 text-primary outline-none transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:bg-navy-600 dark:text-accent-light dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90" x-tooltip.placement.right="Academic Records">
             <svg
               class="h-7 w-7"
               viewBox="0 0 24 24"
@@ -125,12 +117,9 @@
             </svg>
           </a>
 
-          <!-- Forms -->
-          <a
-            href="form-input-text.html"
-            class="flex h-11 w-11 items-center justify-center rounded-lg outline-none transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-            x-tooltip.placement.right="'Forms'"
-          >
+          <!-- Executives -->
+          <a href="{{ route('office.dashboard') }}"
+            class="flex h-11 w-11 items-center justify-center rounded-lg outline-none transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25" x-tooltip.placement.right="Executives">
             <svg
               class="h-7 w-7"
               viewBox="0 0 24 24"
@@ -154,12 +143,8 @@
             </svg>
           </a>
 
-          <!-- Components -->
-          <a
-            href="components-accordion.html"
-            class="flex h-11 w-11 items-center justify-center rounded-lg outline-none transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-            x-tooltip.placement.right="'Components'"
-          >
+          <!-- Votes -->
+          <a href="components-accordion.html" class="flex h-11 w-11 items-center justify-center rounded-lg outline-none transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25" x-tooltip.placement.right="'Components'">
             <svg
               class="h-7 w-7"
               viewBox="0 0 24 24"
@@ -184,11 +169,7 @@
           </a>
 
           <!-- Elements -->
-          <a
-            href="elements-avatar.html"
-            class="flex h-11 w-11 items-center justify-center rounded-lg outline-none transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
-            x-tooltip.placement.right="'Elements'"
-          >
+          <a href="elements-avatar.html" class="flex h-11 w-11 items-center justify-center rounded-lg outline-none transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25" x-tooltip.placement.right="'Elements'">
             <svg
               class="h-7 w-7"
               viewBox="0 0 24 24"
@@ -231,14 +212,11 @@
                 d="M11.995 15.332c1.794 0 3.248-1.464 3.248-3.27 0-1.807-1.454-3.272-3.248-3.272-1.794 0-3.248 1.465-3.248 3.271 0 1.807 1.454 3.271 3.248 3.271Z"
               />
             </svg>
+            
           </a>
-
+ 
           <!-- Profile -->
-          <div
-            x-data="usePopper({placement:'right-end',offset:12})"
-            @click.outside="isShowPopper && (isShowPopper = false)"
-            class="flex"
-          >
+          <div x-data="usePopper({placement:'right-end',offset:12})" @click.outside="isShowPopper && (isShowPopper = false)" class="flex">
             <button
               @click="isShowPopper = !isShowPopper"
               x-ref="popperRef"
@@ -533,11 +511,7 @@
         </div>
 
         <!-- Sidebar Panel Body -->
-        <div
-          x-data="{expandedItem:'menu-item-3'}"
-          class="h-[calc(100%-4.5rem)] overflow-x-hidden pb-6"
-          x-init="$el._x_simplebar = new SimpleBar($el);"
-        >
+        <div x-data="{expandedItem:'menu-item-3'}" class="h-[calc(100%-4.5rem)] overflow-x-hidden pb-6" x-init="$el._x_simplebar = new SimpleBar($el);">
           <ul class="flex flex-1 flex-col px-4 font-inter">
             <li x-data="accordionItem('menu-item-1')">
               <a

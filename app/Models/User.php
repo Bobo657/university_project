@@ -97,4 +97,16 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Contestant::class)->where('contestantable_type', 'award');
     }
+
+    public function office_contested()
+    {
+        return $this->hasMany(Contestant::class)->where('contestantable_type', 'office');
+    }
+
+    public function is_contesting_office()
+    {
+        return $this->office_contested()
+                    ->where('academic_session_id', cache()->get('current_academic_sessions')->id)
+                    ->first();
+    }
 }

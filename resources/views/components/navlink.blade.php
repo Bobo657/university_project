@@ -90,7 +90,7 @@
             fill="currentColor"
         />
         </svg>
-        <span> Academic Records</span>
+        <span>Academic Records</span>
       </a>
   </div>
    
@@ -131,7 +131,7 @@
       </a>
   </div>
   <div class="inline-flex">
-      <a  href="/"
+      <a  href="{{ route('office.dashboard') }}"
         class="btn space-x-2 px-2 py-1.5 text-xs+ font-medium leading-none text-slate-600 hover:text-slate-800 hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-200 dark:hover:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
           <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path

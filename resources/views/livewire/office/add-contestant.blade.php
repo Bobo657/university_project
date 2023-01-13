@@ -30,7 +30,7 @@
           class="flex justify-between rounded-t-lg bg-slate-200 px-4 py-3 dark:bg-navy-800 sm:px-5"
         >
           <h3 class="text-base font-medium text-slate-700 dark:text-navy-100">
-            Add New Contestant
+            Add New Office Contestant
           </h3>
           <button
             @click="showModal = !showModal"
@@ -58,16 +58,16 @@
 
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <label class="block">
-                    <span>Award</span>
-                    <select wire:model="award"
+                    <span>Office</span>
+                    <select wire:model="office"
                     class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"
                     >
-                    <option value="">Select Award</option>
-                    @foreach($awards as $award)
-                    <option value="{{ $award->id }}">{{ $award->name }}</option>
+                    <option value="">Select Office</option>
+                    @foreach($offices as $office)
+                    <option value="{{ $office->id }}">{{ $office->name }}</option>
                     @endforeach
                     </select>
-                    @error('award') 
+                    @error('office') 
                     <span class="text-tiny+ text-error">
                         {{ $message }}
                     </span>

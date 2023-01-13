@@ -1,24 +1,24 @@
 <?php
 
-namespace App\Http\Livewire\Award;
+namespace App\Http\Livewire\Office;
 
-use App\Models\Award;
-use App\Models\User;
 use Livewire\Component;
+use App\Models\Office;
+use App\Models\User;
 
 class AddContestant extends Component
 {
     protected $listeners = ['showNewContestantForm' => 'showForm'];
 
     public $showModal = false;
-    public $awards = [];
-    public $award = "";
+    public $offices = [];
+    public $office = "";
     public $reg_no;
     public $notification_message;
 
     protected $rules = [
         'reg_no' => 'required|min:6|exists:users,reg_no',
-        'award' => 'required|integer|exists:awards,id',
+        'office' => 'required|integer|exists:offices,id',
     ];
 
     public function clearMessage(){
@@ -26,7 +26,7 @@ class AddContestant extends Component
     }
 
     public function showForm(){
-        $this->awards = Award::all();
+        $this->offices = Office::all();
         $this->showModal = true;
     }
 
@@ -34,23 +34,26 @@ class AddContestant extends Component
         $this->validate();
         $student = User::where('reg_no', $this->reg_no)->first();
 
-        if(!$student->award_contested->where('academic_session_id', cache()->get('current_academic_sessions')->id)){
-            $student->award_contested()->create([
+        if(!$student->is_contesting_office()){
+            $student->office_contested()->create([
                 'academic_session_id' =>  cache()->get('current_academic_sessions')->id,
-                'contestantable_type' => 'award',
-                'contestantable_id' => $this->award,
+                'contestantable_type' => 'office',
+                'contestantable_id' => $this->office,
             ]);
 
             $this->showModal = true;
             $this->reset();
             $this->emit('showNotification', "{$student->fullname} has been added as a contestant successfully");
-        }else{
-            $this->notification_message = "{$student->fullname} is already contesting for an award";
+        }
+        else
+        {
+            $this->notification_message = "{$student->fullname} is already contesting for an office";
         }
     }
 
+    
     public function render()
     {
-        return view('livewire.award.add-contestant');
+        return view('livewire.office.add-contestant');
     }
 }
