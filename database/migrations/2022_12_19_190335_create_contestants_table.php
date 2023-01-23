@@ -17,7 +17,6 @@ return new class () extends Migration {
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('academic_session_id')->constrained()->onDelete('cascade');
             $table->morphs('contestantable');
-            $table->integer('votes')->default(0);
             $table->boolean('is_winner')->default(0);
             $table->timestamps();
         });

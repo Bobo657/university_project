@@ -28,11 +28,13 @@ class AcademicRecords extends Component
         $this->academic_sessions = AcademicSession::all();
     }
 
-    public function resetParameters(){
+    public function resetParameters()
+    {
         $this->reset(['search', 'from_date', 'to_date', 'level', 'selected_academic_session_id']);
     }
 
-    public function clearMessage(){
+    public function clearMessage()
+    {
         $this->reset('notification_message');
     }
 
@@ -47,17 +49,17 @@ class AcademicRecords extends Component
     }
 
     public function showDeleteNotification(AcademicRecord $record)
-    { 
+    {
         $this->showDeleteNotification = true;
         $this->selected_record = $record;
     }
 
-    public function deleteStudent()
+    public function deleteRecord()
     {
         $this->selected_record->delete();
         $this->showDeleteNotification  = false;
         $this->notification_message = "Student Academic record was deleted successfully";
-        $this->reset('selected_record','showDeleteNotification');
+        $this->reset('selected_record', 'showDeleteNotification');
     }
 
     public function render()
@@ -77,7 +79,7 @@ class AcademicRecords extends Component
                                 ->orWhere('users.reg_no', 'LIKE', "%{$this->search}%");
                         });
                     })
-                    ->when(!empty($this->has_paid), function ($q) {
+                    ->when(!blank($this->has_paid), function ($q) {
                         return $q->where('paid', "=", $this->has_paid);
                     })
                     ->when(!empty($this->to_date), function ($q) {

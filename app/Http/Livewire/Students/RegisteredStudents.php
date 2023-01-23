@@ -34,11 +34,13 @@ class RegisteredStudents extends Component
         )->first();
     }
 
-    public function resetParameters(){
+    public function resetParameters()
+    {
         $this->reset(['search', 'from_date', 'to_date', 'is_active', 'email_verification', 'gender']);
     }
 
-    public function clearMessage(){
+    public function clearMessage()
+    {
         $this->reset('notification_message');
     }
 
@@ -64,7 +66,7 @@ class RegisteredStudents extends Component
         $this->selected_student = $student;
     }
 
-    public function deleteStudent()
+    public function deleteRecord()
     {
         $this->selected_student->delete();
         $this->showDeleteNotification  = false;
@@ -86,8 +88,11 @@ class RegisteredStudents extends Component
                     ->when(!empty($this->to_date), function ($q) {
                         return $q->where('created_at', '<=', $this->to_date);
                     })
-                    ->when(!empty($this->email_verification), function ($q) {
-                        return $q->where('email_verified_at', '=', $this->email_verification);
+                    ->when(!blank($this->email_verification), function ($q) {
+                        $operator = $this->email_verification > 0 ? '!=' : '=';
+                        //dd($operator);
+
+                        return $q->where('email_verified_at', $operator, null);
                     })
                     ->when(!empty($this->gender), function ($q) {
                         return $q->where('gender', '=', $this->gender);
@@ -95,7 +100,7 @@ class RegisteredStudents extends Component
                     ->when(!empty($this->from_date), function ($q) {
                         return $q->where('created_at', '>=', $this->from_date);
                     })
-                    ->when(!empty($this->is_active), function ($q) {
+                    ->when(!blank($this->is_active), function ($q) {
                         return $q->where('is_active', $this->is_active);
                     })
                     ->paginate($this->no_of_records);

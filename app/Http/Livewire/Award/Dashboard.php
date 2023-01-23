@@ -14,9 +14,12 @@ class Dashboard extends Component
     protected $listeners = ['showNotification' => 'setNotificationMessage'];
 
     public $academic_sessions;
+    public $academic_session;
     public $selected_academic_session_id;
     public $query;
     public $notification_message;
+    public $showDeleteNotification = false;
+    public $selected_record;
 
     public function mount()
     {
@@ -27,10 +30,18 @@ class Dashboard extends Component
     public function updatedSelectedAcademicSessionId()
     {
         $this->academic_session = $this->academic_sessions->find($this->selected_academic_session_id);
+        $this->emit('academic_session_changed', $this->academic_session->id);
     }
 
-    public function clearMessage(){
+    public function clearMessage()
+    {
         $this->reset('notification_message');
+    }
+
+    public function showDeleteNotification(Contestant $record)
+    {
+        $this->showDeleteNotification = true;
+        $this->selected_record = $record;
     }
 
     public function setNotificationMessage($message)
@@ -38,7 +49,15 @@ class Dashboard extends Component
         $this->notification_message = $message;
     }
 
-    public function getContestants() 
+    public function deleteRecord()
+    {
+        $this->selected_record->delete();
+        $this->showDeleteNotification  = false;
+        $this->notification_message = "Contestant has been removed successfully";
+        $this->reset('selected_record');
+    }
+
+    public function getContestants()
     {
         return  Contestant::award()
                 ->with([
@@ -47,32 +66,15 @@ class Dashboard extends Component
                 ])
                 ->withCount('votes')
                 ->where('academic_session_id', $this->academic_session->id)
-                ->when(!empty($this->search), function ($q) {
-                    return $q->whereHas('user', function ($query) {
-                        $query->where('users.first_name', 'LIKE', "%{$this->search}%")
-                        ->orWhere('users.middle_name', 'LIKE', "%{$this->search}%")
-                        ->orWhere('users.last_name', 'LIKE', "%{$this->search}%");
-                    });
-                })
                 ->get()->sortByDesc('contestantable.name');
-    }
-
-    public function getWinners()
-    {
-        return  Contestant::award()->winners()->with([
-                'user:id,first_name,middle_name,last_name',
-                'contestantable:id,name as award'
-                ])
-                ->where('academic_session_id', $this->academic_session->id)
-                ->get();
     }
 
     public function render()
     {
         return view('livewire.award.dashboard', [
-            'contestants' => $this->getContestants(),
-            'winners' => $this->getWinners()
-        ])->extends('layouts.app')
+            'contestants' => $this->getContestants()
+        ])
+        ->extends('layouts.app')
         ->section('content');
     }
 }

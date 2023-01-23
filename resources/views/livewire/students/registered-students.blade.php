@@ -253,9 +253,9 @@
                             </td>
                             <td class="whitespace-nowrap px-4 py-3 sm:px-5">
                                 <label class="inline-flex items-center">
-                                <input {{ $student->is_active ? "checked":"" }} wire:click="toggleStatus({{$student->id}})"
+                                <input {{ $student->is_active ? "checked": "" }} wire:click="toggleStatus({{$student->id}})"
                                     class="form-switch h-4 w-8 rounded-full bg-slate-300 before:rounded-full before:bg-slate-50 checked:bg-primary checked:before:bg-white dark:bg-navy-900 dark:before:bg-navy-300 dark:checked:bg-accent dark:checked:before:bg-white" type="checkbox" 
-                                />
+                                />  
                                 </label>
                             </td>
                             <td class="whitespace-nowrap px-4 py-3 sm:px-5">

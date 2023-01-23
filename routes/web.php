@@ -4,6 +4,7 @@ use App\Http\Livewire\Award\Dashboard;
 use App\Http\Livewire\Office\Dashboard as OfficeDashboard;
 use App\Http\Livewire\Students\{RegisteredStudents,AcademicRecords};
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Votes\{Offices,Awards};
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,10 @@ Route::get('students/registered', RegisteredStudents::class)->name('registered.s
 Route::get('students/academic/records', AcademicRecords::class)->name('academic.records');
 Route::get('students/awards/dashboard', Dashboard::class)->name('awards.dashboard');
 Route::get('students/offices/dashboard', OfficeDashboard::class)->name('office.dashboard');
+Route::get('votes/offices', Offices::class)->name('votes.offices');
+Route::get('votes/awards', Awards::class)->name('votes.awards');
+
+
 
 Route::middleware([
     'auth:sanctum',

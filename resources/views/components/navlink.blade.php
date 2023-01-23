@@ -173,7 +173,7 @@
       <button
         x-ref="popperRef"
         @click="isShowPopper = !isShowPopper"
-        class="btn space-x-2 bg-primary/10 px-2 py-1.5 text-xs+ font-medium leading-none text-primary dark:bg-accent-light/10 dark:text-accent-light dark:text-accent-light"
+        class="btn space-x-2 px-2 py-1.5 text-xs+ font-medium leading-none dark:bg-accent-light/10 dark:text-accent-light dark:text-accent-light"
       >
         <svg
           class="h-6 w-6"
@@ -214,27 +214,19 @@
           <ul>
             <li>
               <a
-                href="#"
+                href="{{ route('votes.offices') }}"
                 class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                >Link</a
+                >Office Votes</a
               >
             </li>
             <li>
               <a
-                href="#"
+                href="{{ route('votes.awards') }}"
                 class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                >Another Link</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
-                >Something else</a
+                >Award Votes</a
               >
             </li>
           </ul>
-          
         </div>
       </div>
     </div>

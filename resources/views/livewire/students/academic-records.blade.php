@@ -218,24 +218,24 @@
             </div>
 
             <div class="flex flex-col justify-between space-y-4 px-4 py-4 sm:flex-row sm:items-center sm:space-y-0 sm:px-5">
-            <div class="flex items-center space-x-2 text-xs+">
-                <span>Show</span>
-                <label class="block">
-                <select wire:model="no_of_records" class="form-select rounded-full border border-slate-300 bg-white px-2 py-1 pr-6 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option>10</option>
-                    <option>30</option>
-                    <option>50</option>
-                </select>
-                </label>
-                <span>entries</span>
-            </div>
+                <div class="flex items-center space-x-2 text-xs+">
+                    <span>Show</span>
+                    <label class="block">
+                    <select wire:model="no_of_records" class="form-select rounded-full border border-slate-300 bg-white px-2 py-1 pr-6 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                        <option>10</option>
+                        <option>30</option>
+                        <option>50</option>
+                    </select>
+                    </label>
+                    <span>entries</span>
+                </div>
 
-            {{ $students->links('components.pagination_links') }}
+                {{ $students->links('components.pagination_links') }}
 
-            <div class="text-xs+">
-                {{ $students ->currentpage() }} - {{ $students ->currentpage() * $students ->perpage() }} 
-                of {{ $students ->total() }} entries
-            </div>
+                <div class="text-xs+">
+                    {{ $students ->currentpage() }} - {{ $students ->currentpage() * $students ->perpage() }} 
+                    of {{ $students ->total() }} entries
+                </div>
             </div>
         </div>
     </div>

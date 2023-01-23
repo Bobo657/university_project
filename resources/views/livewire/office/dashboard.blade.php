@@ -46,7 +46,9 @@
                 <div class="relative flex flex-col overflow-hidden rounded-lg bg-gradient-to-br from-info to-info-focus p-3.5">
                   <p class="text-xs uppercase text-sky-100">Total Conntestants</p>
                   <div class="flex items-end justify-between space-x-2">
-                    <p class="mt-4 text-2xl font-medium text-white">13</p>
+                    <p class="mt-4 text-2xl font-medium text-white">
+                      {{ number_format($contestants->count()) }}
+                    </p>
                    
                   </div>
                   <div class="mask is-reuleaux-triangle absolute top-0 right-0 -m-3 h-16 w-16 bg-white/20"></div>
@@ -54,56 +56,14 @@
                 <div class="rounded-lg bg-gradient-to-br from-pink-500 to-rose-500 p-3.5">
                   <p class="text-xs uppercase text-pink-100">Total Votes</p>
                   <div class=" items-end justify-between space-x-2">
-                    <p class="mt-4 text-2xl font-medium text-white"> {{ $contestants->sum('votes')}}</p>
+                    <p class="mt-4 text-2xl font-medium text-white"> {{ number_format($contestants->sum('votes_count')) }}</p>
                     </a>
                   </div>
                 </div>
             </div>
 
-            <div class="mt-4 sm:mt-5 lg:mt-6">
-                <div class="flex items-center justify-between">
-                  <h2 class="text-base font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100">
-                    Award Winners
-                  </h2>
-                </div>
-                <div class="card mt-3">
-                  <div class="is-scrollbar-hidden min-w-full overflow-x-auto">
-                    <table class="is-hoverable w-full text-left">
-                      <thead>
-                        <tr>
-                          <th class="whitespace-nowrap rounded-tl-lg bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                            Award
-                          </th>
-                          <th class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                            Winner
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        @forelse($winners as $winner)
-                        <tr class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500">
-                          
-                          <td class="whitespace-nowrap px-4 py-3 sm:px-5">
-                            <p>{{ $winner->contestantable->award }}</p>
-                          </td>
-                          <td class="whitespace-nowrap px-4 py-3 sm:px-5">
-                            <p class="font-semibold"> {{ $winner->user->fullname }}</p>
-                          </td>
-                        </tr>
-                        @empty
-                        <tr  class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500">
-                            <td colspan="2" class="whitespace-nowrap px-4 py-3 sm:px-5"> 
-                                <div class="flex justify-center items-center"> 
-                                <span class="text-cool-gray-600  font-medium text-slate-700 dark:text-navy-100"> No record found </span>
-                                </div>
-                            </td>
-                        </tr>
-                        @endforelse
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
+            @livewire('office.winners', ['academic_session_id' => $academic_session->id])
+           
         </div>
 
         <div class="col-span-12 lg:col-span-7">
@@ -149,13 +109,13 @@
                       </td>
                       <td class="whitespace-nowrap px-4 py-3 sm:px-5">{{ $student->contestantable->office }}</td>
                       <td class="whitespace-nowrap px-4 py-3 sm:px-5 text-center">
-                        {{ $student->votes }}
+                        {{ $student->votes_count }}
                       </td>
                       <td class="whitespace-nowrap px-4 py-3 sm:px-5">
                         {{ $student->created_at->format('Y-m-d') }}
                       </td>
                       <td class="whitespace-nowrap px-4 py-3 sm:px-5">
-                        <a class="flex items-center text-error" href="javascript:;">
+                        <a class="flex items-center text-error" href="javascript:;" wire:click.prevent="showDeleteNotification({{ $student->id }})">
                             <i class="w-4 h-4 mr-1"></i> 
                             Remove
                         </a>
@@ -175,6 +135,8 @@
               </div>
         </div>
     </div>
+
+    <x-delete_notification />
 
     @livewire('office.add-contestant')
 </div> 
