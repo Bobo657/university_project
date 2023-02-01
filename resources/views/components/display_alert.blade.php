@@ -26,7 +26,7 @@
       </div>
       <div class="px-2">
         <button
-          @click="isShow = false; $wire.clearMessage(); setTimeout(()=>$root.remove(),300)"
+          @click="isShow = false; setTimeout(()=>$root.remove(),300)"
           class="btn h-7 w-7 rounded-full p-0 font-medium text-info hover:bg-info/20 focus:bg-info/20 active:bg-info/25"
         >
           <svg
@@ -46,5 +46,5 @@
         </button>
       </div>
     </div>
-
+</div>
 @endif

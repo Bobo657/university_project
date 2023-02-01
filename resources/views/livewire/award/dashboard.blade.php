@@ -74,8 +74,7 @@
                 <table class="w-full text-left">
                   <thead>
                     <tr class="border border-transparent border-b-slate-200 dark:border-b-navy-500">
-                      <th
-                        class="whitespace-nowrap px-3 py-3 font-semibold uppercase text-slate-800 dark:text-navy-100 lg:px-5"
+                      <th class="whitespace-nowrap px-3 py-3 font-semibold uppercase text-slate-800 dark:text-navy-100 lg:px-5"
                       >
                         Student
                       </th>
@@ -107,7 +106,9 @@
                       <td class="whitespace-nowrap px-4 py-3 sm:px-5">
                         {{ $student->user->fullname }}
                       </td>
-                      <td class="whitespace-nowrap px-4 py-3 sm:px-5">{{ $student->contestantable->award ?? 'na' }}</td>
+                      <td class="whitespace-nowrap px-4 py-3 sm:px-5">
+                        {{ $student->contestantable->award ?? 'na' }}
+                      </td>
                       <td class="whitespace-nowrap px-4 py-3 sm:px-5 text-center">
                         {{ $student->votes_count }}
                       </td>
@@ -137,6 +138,6 @@
     </div>
     
     <x-delete_notification />
-
+    
     @livewire('award.add-contestant')
 </div> 

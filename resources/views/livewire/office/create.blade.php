@@ -26,7 +26,7 @@
         class="flex justify-between rounded-t-lg bg-slate-200 px-4 py-3 dark:bg-navy-800 sm:px-5"
         >
         <h3 class="text-base font-medium text-slate-700 dark:text-navy-100">
-           New Award Form
+           New Office Form
         </h3>
         <button
             @click="showModal = !showModal"
@@ -51,10 +51,10 @@
         <div class="px-4 py-4 sm:px-5">
         <div class="mt-2 space-y-4">
             <label class="block">
-            <span>Award Name:</span>
+            <span>Office Position:</span>
             <input wire:model="name"
                 class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
-                placeholder="Best Dress"
+                placeholder="President"
                 type="text"
             />
             @error('name') 
