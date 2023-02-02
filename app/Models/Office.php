@@ -25,6 +25,6 @@ class Office extends Model
             'contestant_id',
             'id',
             'id'
-        )->where('contestants.contestantable_type', 'award');
+        )->where('contestants.contestantable_type', 'office');
     }
 }

@@ -10,18 +10,20 @@ class Create extends Component
     protected $listeners = ['addNewOffice' => 'showForm'];
     public $showModal;
     public $name;
-        
-    protected $rules = ['name' => 'required|min:6|unique:offices,name'];
 
-    public function showForm(){
+    protected $rules = ['name' => 'required|min:3|unique:offices,name'];
+
+    public function showForm()
+    {
         $this->resetErrorBag('name');
         $this->showModal = true;
     }
 
-    public function save(){
-       Office::create($this->validate());
-       $this->emit('new_office_created', "{ucFirst($this->name)} position has been created successfully");
-       $this->reset();
+    public function save()
+    {
+        Office::create($this->validate());
+        $this->emit('new_office_created', "{ucFirst($this->name)} position has been created successfully");
+        $this->reset();
     }
 
     public function render()

@@ -31,7 +31,7 @@
       </div>
 
       <!-- Sidebar Panel Body -->
-      {{-- <div x-data="{expandedItem:'menu-item-3'}" class="h-[calc(100%-4.5rem)] overflow-x-hidden pb-6" x-init="$el._x_simplebar = new SimpleBar($el);">
+      <div x-data="{expandedItem:'menu-item-3'}" class="h-[calc(100%-4.5rem)] overflow-x-hidden pb-6" x-init="$el._x_simplebar = new SimpleBar($el);">
         <ul class="flex flex-1 flex-col px-4 font-inter">
           <li x-data="accordionItem('menu-item-1')">
             <a
@@ -966,6 +966,6 @@
             </ul>
           </li>
         </ul>
-      </div> --}}
+      </div>
     </div>
   </div>

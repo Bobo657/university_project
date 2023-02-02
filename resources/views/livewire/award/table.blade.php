@@ -30,9 +30,7 @@
     </h2>
     <button wire:click="$emitTo('award.create', 'addNewAward')" class="btn space-x-2  h-6 bg-info font-medium text-white hover:bg-info-focus hover:shadow-lg hover:shadow-info/50 focus:bg-info-focus focus:shadow-lg focus:shadow-info/50 active:bg-info-focus/90">
       <span>Create Award</span>
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-        <path d="M5.5 16a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 16h-8z"></path>
-      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="edit" data-lucide="edit" class="lucide lucide-edit"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
     </button>
   </div>
 
@@ -92,14 +90,14 @@
               </div>
             </td>
             <td class="whitespace-nowrap px-4 py-3 sm:px-5">
-              <span><div class="flex justify-center space-x-1">
-                <button @click="editItem" class="btn h-8 w-8 p-0 text-info hover:bg-info/20 focus:bg-info/20 active:bg-info/25">
+              <div class="flex justify-center space-x-1">
+                <button @click="editItem" class="btn h-8 w-6 p-0 text-info hover:bg-info/20 focus:bg-info/20 active:bg-info/25">
                     <i class="fa fa-edit"></i>
                 </button>
-                <button @click="deleteItem" class="btn h-8 w-8 p-0 text-error hover:bg-error/20 focus:bg-error/20 active:bg-error/25">
+                <button @click="deleteItem" class="btn h-8 w-6 p-0 text-error hover:bg-error/20 focus:bg-error/20 active:bg-error/25">
                     <i class="fa fa-trash-alt"></i>
                 </button>
-            </div></span>
+              </div>
             </td>
           </tr>
           @empty

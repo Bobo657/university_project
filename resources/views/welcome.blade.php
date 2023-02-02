@@ -5,7 +5,7 @@
   <div class="col-span-12 lg:col-span-8">
     <div class="flex items-center justify-between space-x-2">
       <h2 class="text-base font-medium tracking-wide text-slate-800 line-clamp-1 dark:text-navy-100">
-        Sales Overview
+        Dues Overview
       </h2>
     </div>
 

@@ -45,6 +45,7 @@
           />
         </svg>
       </div>
+      
       <p class="mt-1 text-xs+">Verified Students</p>
     </div>
     <div class="rounded-lg bg-slate-150 p-4 dark:bg-navy-700">
