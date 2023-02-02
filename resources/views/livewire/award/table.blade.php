@@ -1,6 +1,6 @@
-<div class="card px-3">
-  <div class="grid grid-cols-2 gap-3 px-4 sm:grid-cols-2 sm:gap-5 sm:px-5">
-    <div class="mt-2">
+<div class="card px-3 col-span-12 lg:col-span-6">
+  <div class="grid grid-cols-2 gap-3 px-4 sm:grid-cols-2 sm:gap-5 sm:px-5 mb-8">
+    <div class="mt-2 min-w-full">
         <div class="flex items-center space-x-1">
             <p class="text-2xl font-semibold text-slate-700 dark:text-navy-100">
             {{ number_format($awards->sum('contestants_count')) }}
@@ -21,8 +21,8 @@
       </p>
     </div>
   </div>
-  <br><br>
-  <div class="-mt-5 flex items-center justify-between">
+ 
+  <div class="mt-3 flex items-center justify-between">
     <h2
       class="text-sm+ font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100"
     >

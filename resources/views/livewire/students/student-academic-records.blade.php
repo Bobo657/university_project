@@ -97,7 +97,9 @@
                 class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500"
               >
                 <td class="whitespace-nowrap px-4 py-3 sm:px-5">
-                  {{ $student_name }}
+                  <a href="{{ route('student.profile', ['student' => $student->id ]) }}"> 
+                    {{ $student_name }} 
+                  </a>
                 </td>
                 <td class="whitespace-nowrap px-4 py-3 sm:px-5">
                   {{ $record->level}}Level

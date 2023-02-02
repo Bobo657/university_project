@@ -40,22 +40,24 @@
         
     </div>
 
-    <div class="mt-4 grid grid-cols-12 gap-4 transition-all duration-[.25s] sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
-        <div class=" pb-3 lg:col-span-5" >
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-2 lg:gap-6">
+    <div class="mt-4 grid grid-cols-12 gap-4 sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
+        <div class=" pb-3 lg:col-span-5 col-span-12" >
+            <div class="grid grid-cols-2 gap-4 sm:grid-cols-2  lg:grid-cols-2 lg:gap-6">
                 <div class="relative flex flex-col overflow-hidden rounded-lg bg-gradient-to-br from-info to-info-focus p-3.5">
                   <p class="text-xs uppercase text-sky-100">Total Conntestants</p>
                   <div class="flex items-end justify-between space-x-2">
-                    <p class="mt-4 text-2xl font-medium text-white">{{ number_format($contestants->count()) }}</p>
-                   
+                    <p class="mt-4 text-2xl font-medium text-white">
+                      {{ number_format($contestants->count()) }}
+                    </p>
                   </div>
                   <div class="mask is-reuleaux-triangle absolute top-0 right-0 -m-3 h-16 w-16 bg-white/20"></div>
                 </div>
+
                 <div class="rounded-lg bg-gradient-to-br from-pink-500 to-rose-500 p-3.5">
                   <p class="text-xs uppercase text-pink-100">Total Votes</p>
                   <div class=" items-end justify-between space-x-2">
                     <p class="mt-4 text-2xl font-medium text-white"> {{ number_format($contestants->sum('votes_count')) }} </p>
-                    </a>
+                    
                   </div>
                 </div>
             </div>

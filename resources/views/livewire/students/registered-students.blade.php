@@ -23,17 +23,18 @@
             <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
                 {{ number_format($stats->total_students) }}
             </p>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary dark:text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary dark:text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87"></path><path d="M16 3.13a4 4 0 010 7.75"></path>
+                </svg>
             </div>
-            <p class="mt-1 text-xs+">Total Studennts</p>
+            <p class="mt-1 text-xs+">Total Students</p>
         </div>
         <div class="rounded-lg bg-slate-100 p-4 dark:bg-navy-600">
             <div class="flex justify-between">
             <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
                 {{ number_format($stats->male_students) }}
             </p>
+            
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
             </svg>
@@ -226,7 +227,7 @@
                                 {{ ($students->currentpage()-1) * $students->perpage() + $loop->index + 1 }}
                             </td>
                             <td  class="px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5">
-                                <a href=" route('admin.student.profile', ['student' => $student->id ]) }}" > 
+                                <a href="{{ route('student.profile', ['student' => $student->id ]) }}" > 
                                     {{ $student->full_name }}
                                 </a>
                             </td>
@@ -286,26 +287,28 @@
             </table>
             </div>
 
+            @if($students->count()  > $no_of_records)
             <div class="flex flex-col justify-between space-y-4 px-4 py-4 sm:flex-row sm:items-center sm:space-y-0 sm:px-5">
-            <div class="flex items-center space-x-2 text-xs+">
-                <span>Show</span>
-                <label class="block">
-                <select wire:model="no_of_records" class="form-select rounded-full border border-slate-300 bg-white px-2 py-1 pr-6 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
-                    <option>10</option>
-                    <option>30</option>
-                    <option>50</option>
-                </select>
-                </label>
-                <span>entries</span>
-            </div>
+                <div class="flex items-center space-x-2 text-xs+">
+                    <span>Show</span>
+                    <label class="block">
+                    <select wire:model="no_of_records" class="form-select rounded-full border border-slate-300 bg-white px-2 py-1 pr-6 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                        <option>10</option>
+                        <option>30</option>
+                        <option>50</option>
+                    </select>
+                    </label>
+                    <span>entries</span>
+                </div>
 
-            {{ $students->links('components.pagination_links') }}
+                {{ $students->links('components.pagination_links') }}
 
-            <div class="text-xs+">
-                {{ $students ->currentpage() }} - {{ $students ->currentpage() * $students ->perpage() }} 
-                of {{ $students ->total() }} entries
+                <div class="text-xs+">
+                    {{ $students ->currentpage() }} - {{ $students->currentpage() * $students->perpage() }} 
+                    of {{ $students ->total() }} entries
+                </div>
             </div>
-            </div>
+            @endif
         </div>
     </div>
     

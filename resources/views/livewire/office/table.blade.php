@@ -1,4 +1,4 @@
-<div class="card px-3">
+<div class="card  col-span-12 lg:col-span-6">
   <div class="grid grid-cols-2 gap-3 px-4 sm:grid-cols-2 sm:gap-5 sm:px-5">
     <div class="mt-2">
         <div class="flex items-center space-x-1">
@@ -21,11 +21,9 @@
       </p>
     </div>
   </div>
-  <br><br>
-  <div class="-mt-5 flex items-center justify-between">
-    <h2
-      class="text-sm+ font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100"
-    >
+  
+  <div class="mt-5 flex items-center justify-between px-3">
+    <h2  class="text-sm+ font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100">
       Office Details
     </h2>
     <button wire:click="$emitTo('office.create', 'addNewOffice')" class="btn space-x-2  h-6 bg-info font-medium text-white hover:bg-info-focus hover:shadow-lg hover:shadow-info/50 focus:bg-info-focus focus:shadow-lg focus:shadow-info/50 active:bg-info-focus/90">

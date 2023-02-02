@@ -3,7 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Livewire\Award\Dashboard;
 use App\Http\Livewire\Office\Dashboard as OfficeDashboard;
-use App\Http\Livewire\Students\{RegisteredStudents,AcademicRecords};
+use App\Http\Livewire\Students\{RegisteredStudents,AcademicRecords,Profile};
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Votes\{Offices,Awards};
 
@@ -27,7 +27,7 @@ Route::get('students/awards/dashboard', Dashboard::class)->name('awards.dashboar
 Route::get('students/offices/dashboard', OfficeDashboard::class)->name('office.dashboard');
 Route::get('votes/offices', Offices::class)->name('votes.offices');
 Route::get('votes/awards', Awards::class)->name('votes.awards');
-
+Route::get('/students/student/profile/{student}', Profile::class)->name('student.profile');
 
 
 Route::middleware([

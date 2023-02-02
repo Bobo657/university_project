@@ -1,12 +1,4 @@
 <div class="flex items-center justify-between mt-3">
-    <h2
-      class="font-medium tracking-wide text-slate-700 dark:text-navy-100"
-    >
-     Level Stats
-    </h2>
-    
-  </div>
-  
   <div class="mt-4 flex h-2 space-x-1">
     <div
       class="w-5/12 rounded-full bg-primary dark:bg-accent"
@@ -65,7 +57,7 @@
                 <td class="whitespace-nowrap py-2 text-center">
                         {{ number_format($record->female_students) }}
                 </td>
-                <td class="whitespace-nowrap py-2 text-center">na%</td>
+                <td class="whitespace-nowrap py-2 text-center">42%</td>
             </tr>
         @endforeach
        
