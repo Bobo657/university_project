@@ -22,7 +22,7 @@ class Create extends Component
     public function save()
     {
         Office::create($this->validate());
-        $this->emit('new_office_created', "{ucFirst($this->name)} position has been created successfully");
+        $this->emit('new_office_created', "{$this->name} position has been created successfully");
         $this->reset();
     }
 

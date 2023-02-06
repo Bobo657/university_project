@@ -18,6 +18,8 @@ class Dashboard extends Component
     public $query;
     public $notification_message;
     public $academic_session;
+    public $showDeleteNotification = false;
+    public $selected_record;
 
     public function mount()
     {
@@ -39,6 +41,20 @@ class Dashboard extends Component
     public function setNotificationMessage($message)
     {
         $this->notification_message = $message;
+    }
+
+    public function showDeleteNotification(Contestant $record)
+    {
+        $this->showDeleteNotification = true;
+        $this->selected_record = $record;
+    }
+
+    public function deleteRecord()
+    {
+        $this->selected_record->delete();
+        $this->showDeleteNotification  = false;
+        $this->notification_message = "Contestant has been removed successfully";
+        $this->reset('selected_record');
     }
 
     public function getContestants()

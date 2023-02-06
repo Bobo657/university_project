@@ -7,11 +7,21 @@ use Livewire\Component;
 
 class Table extends Component
 {
-    protected $listeners = ['new_office_created' => 'notify'];
+    protected $listeners = [
+        'new_office_created' => 'notify',
+        'showNotification' => 'notify'
+    ];
 
     public $offices;
     public $notification_message;
+    public $showDeleteNotification;
+    public $selected_record;
 
+    public function showDeleteNotification(Office $office)
+    {
+        $this->showDeleteNotification = true;
+        $this->selected_record = $office;
+    }
 
     public function notify($message)
     {

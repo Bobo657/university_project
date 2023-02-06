@@ -1,4 +1,4 @@
-<div x-data="{displayModal: @entangle('showDeleteNotification'), student: @entangle('selected_student')}">
+<div x-data="{displayModal: @entangle('showDeleteNotification'), record: @entangle('selected_record')}">
     <div
       class="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-4 py-6 sm:px-5"
       x-show="displayModal"

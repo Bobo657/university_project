@@ -16,7 +16,7 @@ class RegisteredStudents extends Component
     public $from_date;
     public $to_date;
     public $showDeleteNotification = false;
-    public $selected_student;
+    public $selected_record;
     public $notification_message;
     public $stats;
     public $gender;
@@ -63,15 +63,15 @@ class RegisteredStudents extends Component
     public function showDeleteNotification(User $student)
     {
         $this->showDeleteNotification = true;
-        $this->selected_student = $student;
+        $this->selected_record = $student;
     }
 
     public function deleteRecord()
     {
-        $this->selected_student->delete();
+        $this->selected_record->delete();
         $this->showDeleteNotification  = false;
         $this->notification_message = "Student record was deleted successfully";
-        $this->reset('selected_student');
+        $this->reset('selected_record');
     }
 
     public function render()

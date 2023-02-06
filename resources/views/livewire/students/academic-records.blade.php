@@ -163,7 +163,7 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody> 
                     @forelse($students as $student)
                         <tr class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500">
                             <td class="whitespace-nowrap px-4 py-3 sm:px-5">

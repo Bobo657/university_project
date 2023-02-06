@@ -97,7 +97,7 @@
                 class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500"
               >
                 <td class="whitespace-nowrap px-4 py-3 sm:px-5">
-                  <a href="{{ route('student.profile', ['student' => $student->id ]) }}"> 
+                  <a href="{{ route('student.profile', ['student' => $record->user_id ]) }}"> 
                     {{ $student_name }} 
                   </a>
                 </td>
@@ -119,6 +119,13 @@
                 <td class="whitespace-nowrap px-4 py-3 sm:px-5">{{ $record->created_at->format('Y-m-d') }}</td>
               </tr>
               @empty
+              <tr  class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500">
+                  <td colspan="6" class="whitespace-nowrap px-4 py-3 sm:px-5"> 
+                      <div class="flex justify-center items-center"> 
+                      <span class="text-cool-gray-600 text"> No record found </span>
+                      </div>
+                  </td>
+                </tr>
 
               @endforelse
               

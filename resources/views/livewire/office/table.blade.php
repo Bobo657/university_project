@@ -80,10 +80,10 @@
             </td>
             <td class="whitespace-nowrap px-4 py-3 sm:px-5">
               <span><div class="flex justify-center space-x-1">
-                <button @click="editItem" class="btn h-8 w-6 p-0 text-info hover:bg-info/20 focus:bg-info/20 active:bg-info/25">
+                <button class="btn h-8 w-6 p-0 text-info hover:bg-info/20 focus:bg-info/20 active:bg-info/25">
                     <i class="fa fa-edit"></i>
                 </button>
-                <button @click="deleteItem" class="btn h-8 w-6 p-0 text-error hover:bg-error/20 focus:bg-error/20 active:bg-error/25">
+                <button wire:click.prevent="showDeleteNotification({{ $office->id }})" class="btn h-8 w-6 p-0 text-error hover:bg-error/20 focus:bg-error/20 active:bg-error/25">
                     <i class="fa fa-trash-alt"></i>
                 </button>
             </div></span>
@@ -92,11 +92,11 @@
           @empty
               
           @endforelse
-          
         </tbody>
       </table>
     </div>
   </div>
+  <x-delete_notification />
 
   @livewire('office.create')
 </div>

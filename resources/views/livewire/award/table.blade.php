@@ -108,6 +108,6 @@
       </table>
     </div>
   </div>
-
+  
   @livewire('award.create')
 </div>

@@ -1,5 +1,5 @@
 <div class="flex items-center justify-between mt-3">
-  <div class="mt-4 flex h-2 space-x-1">
+  {{-- <div class="mt-4 flex h-2 space-x-1">
     <div
       class="w-5/12 rounded-full bg-primary dark:bg-accent"
       x-tooltip.primary="'Exellent'"
@@ -63,5 +63,5 @@
        
       </tbody>
     </table>
-  </div>
+  </div> --}}
 </div>
