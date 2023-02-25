@@ -14683,15 +14683,15 @@
                         analyticsSalesOverview: {
                             colors: ["#4C4EE7", "#0EA5E9"],
                             series: [
-                                { name: "Male", data: [28, 45, 35, 50, 32, 55, 23, 60, 28, 45, 35, 50] },
-                                { name: "Female", data: [24, 25, 20, 25, 12, 20, 15, 20, 14, 25, 20, 25] },
+                                { name: "Male", data: [28, 45, 35, 50] },
+                                { name: "Female", data: [24, 25, 20, 25] },
                             ],
                             chart: { height: 255, type: "bar", parentHeightOffset: 0, toolbar: { show: 1 } },
                             dataLabels: { enabled: !1 },
                             plotOptions: { bar: { borderRadius: 4, barHeight: "90%", columnWidth: "45%" } },
                             legend: { show: !1 },
                             xaxis: {
-                                categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                                categories: ["Level1", "Level2", "Level3", "Level4"],
                                 labels: { hideOverlappingLabels: !1 },
                                 axisBorder: { show: !1 },
                                 axisTicks: { show: !1 },

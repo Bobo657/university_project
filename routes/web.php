@@ -1,11 +1,7 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Livewire\Award\Dashboard;
-use App\Http\Livewire\Office\Dashboard as OfficeDashboard;
-use App\Http\Livewire\Students\{RegisteredStudents,AcademicRecords,Profile};
+use App\Http\Livewire\Student\RegisteredStudentsList;
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\Votes\{Offices,Awards};
 
 /*
 |--------------------------------------------------------------------------
@@ -13,21 +9,17 @@ use App\Http\Livewire\Votes\{Offices,Awards};
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::get('students/registered', RegisteredStudents::class)->name('registered.students');
-Route::get('students/academic/records', AcademicRecords::class)->name('academic.records');
-Route::get('students/awards/dashboard', Dashboard::class)->name('awards.dashboard');
-Route::get('students/offices/dashboard', OfficeDashboard::class)->name('office.dashboard');
-Route::get('votes/offices', Offices::class)->name('votes.offices');
-Route::get('votes/awards', Awards::class)->name('votes.awards');
-Route::get('/students/student/profile/{student}', Profile::class)->name('student.profile');
+Route::get('/registered/students', RegisteredStudentsList::class)->name('registered.students');
 
 
 Route::middleware([

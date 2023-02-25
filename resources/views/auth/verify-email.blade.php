@@ -1,7 +1,11 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <img
+            class="h-5.5 w-5.5"
+            src="{{ env('APP_URL') }}/img/logo.png"
+            alt="logo"
+            />
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
@@ -26,11 +30,7 @@
             </form>
 
             <div>
-                <a
-                    href="{{ route('profile.show') }}"
-                    class="underline text-sm text-gray-600 hover:text-gray-900"
-                >
-                    {{ __('Edit Profile') }}</a>
+               
 
                 <form method="POST" action="{{ route('logout') }}" class="inline">
                     @csrf

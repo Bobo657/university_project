@@ -35,7 +35,7 @@
     <div class="inline-flex">
      
 
-        <a  href="{{ route('registered.students') }}"
+        <a  href="route('registered.students') }}"
           class="btn space-x-2 px-2 py-1.5 text-xs+ font-medium leading-none text-slate-600 hover:text-slate-800 hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-200 dark:hover:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="users" data-lucide="users" class="lucide lucide-users block mx-auto">
             <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87"></path><path d="M16 3.13a4 4 0 010 7.75"></path></svg>
@@ -44,7 +44,7 @@
         </a>
     </div>
     <div class="inline-flex">
-      <a  href="{{ route('academic.records') }}"
+      <a  href="route('academic.records') }}"
         class="btn space-x-2 px-2 py-1.5 text-xs+ font-medium leading-none text-slate-600 hover:text-slate-800 hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-200 dark:hover:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="book-open" data-lucide="book-open" class="lucide lucide-book-open block mx-auto"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"></path><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"></path></svg>
         <span>Academic Records</span>
@@ -52,14 +52,14 @@
   </div>
    
   <div class="inline-flex">
-      <a  href="{{ route('awards.dashboard') }}"
+      <a  href="route('awards.dashboard') }}"
         class="btn space-x-2 px-2 py-1.5 text-xs+ font-medium leading-none text-slate-600 hover:text-slate-800 hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-200 dark:hover:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="award" data-lucide="award" class="lucide lucide-award block mx-auto"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
         <span>Student  Awards</span>
       </a>
   </div>
   <div class="inline-flex">
-      <a  href="{{ route('office.dashboard') }}"
+      <a  href="route('office.dashboard') }}"
         class="btn space-x-2 px-2 py-1.5 text-xs+ font-medium leading-none text-slate-600 hover:text-slate-800 hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-200 dark:hover:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25">
           <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -117,14 +117,14 @@
           <ul>
             <li>
               <a
-                href="{{ route('votes.offices') }}"
+                href="route('votes.offices') }}"
                 class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
                 >Office Votes</a
               >
             </li>
             <li>
               <a
-                href="{{ route('votes.awards') }}"
+                href="route('votes.awards') }}"
                 class="flex h-8 items-center px-3 pr-8 font-medium tracking-wide outline-none transition-all hover:bg-slate-100 hover:text-slate-800 focus:bg-slate-100 focus:text-slate-800 dark:hover:bg-navy-600 dark:hover:text-navy-100 dark:focus:bg-navy-600 dark:focus:text-navy-100"
                 >Award Votes</a
               >

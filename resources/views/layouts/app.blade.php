@@ -5,14 +5,9 @@
     <!-- Meta tags  -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
-
-    <title>Lineone - Starter Page v5</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title>{{ config('app.name')}} - @yield('title')</title>
     <link rel="icon" type="image/png" href="/images/favicon.png" />
-
     <!-- CSS Assets -->
     <link rel="stylesheet" href="/css/app.css" />
 
@@ -23,10 +18,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"/>
     <script>
       /**
        * THIS SCRIPT REQUIRED FOR PREVENT FLICKERING IN SOME BROWSERS
@@ -49,24 +41,18 @@
     </div>
 
     <!-- Page Wrapper -->
-    <div
-      id="root"
-      class="min-h-100vh flex grow bg-slate-50 dark:bg-navy-900"
-      x-cloak
-    >
-      <!-- Sidebar -->
-      @include('components.sidebar')
+    <div id="root" class="min-h-100vh flex grow bg-slate-50 dark:bg-navy-900" x-cloak>
+       <!-- Sidebar -->
+       <x-sidebar />
 
       <!-- App Header Wrapper-->
       <nav class="header print:hidden">
         <!-- App Header  -->
         <div class="header-container relative flex w-full bg-white dark:bg-navy-700 print:hidden sm:flex-col">
           <!-- Header Items -->
-         @include('components.header_items')
-
+         <x-header_items />
           <!-- Header Navigation -->
-         @include('components.navlink')
-         
+          <x-navlink />
         </div>
       </nav>
 
@@ -79,15 +65,9 @@
         x-transition:leave="easy-in transition-all"
         x-transition:leave-start="opacity-100 scale-100"
         x-transition:leave-end="opacity-0 scale-95"
-        class="fixed inset-0 z-[100] flex flex-col bg-white dark:bg-navy-700 sm:hidden"
-      >
-        <div
-          class="flex items-center space-x-2 bg-slate-100 px-3 pt-2 dark:bg-navy-800"
-        >
-          <button
-            class="btn -ml-1.5 h-7 w-7 shrink-0 rounded-full p-0 text-slate-600 hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25"
-            @click="$store.global.isSearchbarActive = false"
-          >
+        class="fixed inset-0 z-[100] flex flex-col bg-white dark:bg-navy-700 sm:hidden">
+        <div class="flex items-center space-x-2 bg-slate-100 px-3 pt-2 dark:bg-navy-800">
+          <button class="btn -ml-1.5 h-7 w-7 shrink-0 rounded-full p-0 text-slate-600 hover:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:active:bg-navy-300/25" @click="$store.global.isSearchbarActive = false">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-5 w-5"
@@ -159,14 +139,8 @@
           </button>
         </div>
 
-        <div
-          class="is-scrollbar-hidden overflow-y-auto overscroll-contain pb-2"
-        >
-          
-
-          <div
-            class="mt-3 flex items-center justify-between bg-slate-100 py-1.5 px-3 dark:bg-navy-800"
-          >
+        <div class="is-scrollbar-hidden overflow-y-auto overscroll-contain pb-2">
+          <div class="mt-3 flex items-center justify-between bg-slate-100 py-1.5 px-3 dark:bg-navy-800">
             <p class="text-xs uppercase">Recent</p>
             <a
               href="#"
@@ -356,10 +330,12 @@
             @yield('content')
       </main>
     </div>
+
     <!-- 
-        This is a place for Alpine.js Teleport feature 
-        @see https://alpinejs.dev/directives/teleport
+    This is a place for Alpine.js Teleport feature 
+    @see https://alpinejs.dev/directives/teleport
       -->
+
     <div id="x-teleport-target"></div>
     <script>
       window.addEventListener("DOMContentLoaded", () => Alpine.start());

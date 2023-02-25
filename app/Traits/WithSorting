@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Traits;
+
+//use Livewire\WithPagination;
+
+trait WithSorting
+{
+    // use  WithPagination;
+
+    // public $search;
+    // public $no_of_records = 10;
+    // public $from_date;
+    // public $to_date;
+
+    // public function resetParameters()
+    // {
+    //     $this->reset();
+    // }
+
+    // public function updatingSearch()
+    // {
+    //     $this->resetPage();
+    // }
+
+    // public function updatingNoOfRecords()
+    // {
+    //     $this->resetPage();
+    // }
+}

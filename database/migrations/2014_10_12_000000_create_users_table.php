@@ -5,12 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class () extends Migration {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
@@ -24,8 +19,8 @@ return new class () extends Migration {
             $table->string('address');
             $table->string('dob');
             $table->boolean('graduated')->default(false);
-            $table->boolean('is_active')->default(false);
-            $table->boolean('is_admin')->default(false);
+            $table->boolean('active')->default(false);
+            $table->string('role')->default('student');
             $table->string('hobby');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -36,12 +31,7 @@ return new class () extends Migration {
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('users');
     }
