@@ -31,7 +31,13 @@
   <body
     x-data
     x-bind="$store.global.documentBody"
-    class="is-header-blur navigation:horizontal"
+    class="is-header-blur navigation:horizontal",
+    @display-notification.window="$notification({
+      text: event.detail.message,
+      variant:'info',
+      duration:3000,
+      position:'right-top'
+    })"
   >
     <!-- App preloader-->
     <div

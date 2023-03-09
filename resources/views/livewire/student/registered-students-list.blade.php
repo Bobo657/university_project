@@ -23,7 +23,7 @@
             <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
                 {{ number_format($stats->total_students) }}
             </p>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary dark:text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary dark:text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87"></path><path d="M16 3.13a4 4 0 010 7.75"></path>
                 </svg>
             </div>
@@ -35,8 +35,9 @@
                 {{ number_format($stats->male_students) }}
             </p>
             
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path fill="#000" d="M12,2c-4.41,0-8,3.59-8,8s3.59,8,8,8s8-3.59,8-8S16.41,2,12,2z M12,16c-2.76,0-5-2.24-5-5s2.24-5,5-5s5,2.24,5,5S14.76,16,12,16z"/>
+                <circle fill="#000" cx="12" cy="8" r="2"/>
             </svg>
             </div>
             <p class="mt-1 text-xs+">Male Students</p>
@@ -46,8 +47,10 @@
             <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
                 {{ number_format($stats->total_students - $stats->male_students) }}
             </p>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-warning" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+           
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-8 w-8 text-warning" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="7" />
+                <path d="M16.2839 15.9556C14.4567 17.7828 11.5433 17.7828 9.71613 15.9556M7.50539 13.7449C6.15421 15.0961 6.15421 17.1758 7.50539 18.527C8.85657 19.8782 10.9363 19.8782 12.2874 18.527M12.2874 18.527C13.6386 19.8782 15.7183 19.8782 17.0695 18.527M16.2839 15.9556C17.6351 14.6044 17.6351 12.5247 16.2839 11.1735C14.9327 9.82236 12.853 9.82236 11.5018 11.1735M16.2839 15.9556C17.106 14.1337 16.4565 11.9752 14.6345 11.1532C12.8126 10.3311 10.6541 10.9807 9.83198 12.8027M9.71613 15.9556C8.89402 14.1337 9.54355 11.9752 11.3655 11.1532C13.1874 10.3311 15.3459 10.9807 16.168 12.8027" />
             </svg>
             </div>
             <p class="mt-1 text-xs+">Female Studennts</p>
@@ -57,9 +60,9 @@
             <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
                 {{ number_format($stats->total_students - $stats->verified_students) }}
             </p>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-info" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"></path>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-info" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+               
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-11h-1v5h1V9zm0 6h-1v1h1v-1z"/>
             </svg>
             </div>
             <p class="mt-1 text-xs+">Unverified Students</p>
@@ -67,103 +70,79 @@
     </div>
 
     <div x-data="{isFilterExpanded:false}">
+        <div class="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-5 ">
+            <label class="block">
+                <span>Search</span>
+                <input wire:model="search" class="form-input mt-1.5 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent" placeholder="Enter search" type="text">
+            </label>
+            <label class="block">
+                <span>From:</span>
+                <div class="relative mt-1.5 flex">
+                    <input x-init="$el._x_flatpickr = flatpickr($el)" class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent flatpickr-input" placeholder="Choose start date..." type="text" readonly="readonly" wire:model="from_date">
+                    <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-colors duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                    </svg>
+                    </span>
+                </div>
+            </label>
+            <label class="block" x-data="{ from_date : 2023-02-07 }">
+                <span>To:</span>
+                <div class="relative mt-1.5 flex">
+                    <input x-init="$el._x_flatpickr = flatpickr($el,{minDate: 'from_date' })" class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent flatpickr-input" placeholder="Choose start date..." type="text" readonly="readonly" wire:model="to_date">
+                    <div class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-colors duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                    </svg>
+                    </div>
+                </div>
+            </label>
+            <label class="block">
+                <span>Gender</span>
+                <select wire:model="gender"
+                  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"
+                >
+                  <option value="">Select gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+            </label>
+            <label class="block">
+                <span>Email Verification</span>
+                <select wire:model="email_verification" class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"
+                >
+                  <option value="">Select Status</option>
+                  <option value="0">Unverified</option>
+                  <option value="1">Verified</option>
+                </select>
+            </label>
+            <label class="block">
+                <span>Status</span>
+                <select wire:model="active"
+                  class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"
+                >
+                  <option value="">Select account status</option>
+                  <option value="1">Active</option>
+                  <option value="0">Inactive</option>
+                </select>
+            </label>
+            <div class="inline-space mt-5 flex flex-wrap">
+                <button wire:click="resetParameters()" class="btn font-medium text-error hover:bg-error/20 focus:bg-error/20 active:bg-error/25  mt-2">
+                Reset
+                </button>
+            </div>
+        </div>
+
         <div class="flex items-center justify-between">
             <h2 class="text-base font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100">
                 Students Table
             </h2>
-            <div class="flex">
-                <div class="flex items-center" x-data="{isInputActive:false}">
-                <label class="block">
-                    <input wire:model.debounce="search" x-effect="isInputActive === true &amp;&amp; $nextTick(() => { $el.focus()});" :class="isInputActive ? 'w-32 lg:w-48' : 'w-0'" class="form-input bg-transparent px-1 text-right transition-all duration-100 placeholder:text-slate-500 dark:placeholder:text-navy-200 w-0" placeholder="Search here..." type="text">
-                </label>
-                <button @click="isInputActive = !isInputActive" class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                    </svg>
-                </button>
-                </div>
-
-                <button @click="isFilterExpanded = !isFilterExpanded" class="btn h-8 w-8 rounded-full p-0 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M18 11.5H6M21 4H3m6 15h6"></path>
-                </svg>
-                </button>
-            </div>
-        </div>
-
-        <div x-show="isFilterExpanded" x-collapse="" hidden="">
-            <div class="py-3">
-            <div class="grid grid-cols-4 gap-4 sm:grid-cols-4 sm:gap-5 ">
-                <label class="block">
-                    <span>From:</span>
-                    <div class="relative mt-1.5 flex">
-                        <input x-init="$el._x_flatpickr = flatpickr($el)" class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent flatpickr-input" placeholder="Choose start date..." type="text" readonly="readonly" wire:model="from_date">
-                        <span class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-colors duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
-                        </span>
-                    </div>
-                </label>
-                <label class="block">
-                    <span>To:</span>
-                    <div class="relative mt-1.5 flex">
-                        <input x-init="$el._x_flatpickr = flatpickr($el)" class="form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent flatpickr-input" placeholder="Choose start date..." type="text" readonly="readonly" wire:model="to_date">
-                        <div class="pointer-events-none absolute flex h-full w-10 items-center justify-center text-slate-400 peer-focus:text-primary dark:text-navy-300 dark:peer-focus:text-accent">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-colors duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
-                        </div>
-                    </div>
-                </label>
-                <div class="sm:col-span-2">
-                    <div class=" grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5 lg:gap-6">
-                        <label class="block">
-                            <span>Gender</span>
-                            <select wire:model="gender"
-                              class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"
-                            >
-                              <option value="">Select gender</option>
-                              <option value="Male">Male</option>
-                              <option value="Female">Female</option>
-                            </select>
-                        </label>
-                        <label class="block">
-                            <span>Email Verification</span>
-                            <select wire:model="email_verification"
-                              class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"
-                            >
-                              <option value="">Select Status</option>
-                              <option value="0">Unverified</option>
-                              <option value="1">Verified</option>
-                            </select>
-                        </label>
-                        <label class="block">
-                            <span>Status</span>
-                            <select wire:model="is_active"
-                              class="form-select mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent"
-                            >
-                              <option value="">Select account status</option>
-                              <option value="1">Active</option>
-                              <option value="0">Inactive</option>
-                            </select>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-4 space-x-1 text-right">
-                <button @click="isFilterExpanded = false; $wire.resetParameters()" class="btn bg-primary font-medium text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
-                Reset
-                </button>
-            </div>
-            </div>
-        </div>
-
+        </div> 
         <div class="card mt-3">
             <div class="is-scrollbar-hidden min-w-full overflow-x-auto" x-data="pages.tables.initExample1">
             <table class="is-hoverable w-full text-left">
                 <thead>
-                    <tr class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500">
+                    <tr class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500 bg-slate-200">
                         <th
                         class="whitespace-nowrap px-3 py-3 font-semibold uppercase text-slate-800 dark:text-navy-100 lg:px-5"
                         >
@@ -220,14 +199,21 @@
                 </thead>
                 <tbody>
                     @forelse($students as $student)
-                        <tr class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500">
+                        <tr @class(['bg-slate-100' => $student->graduated]) class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500">
                             <td class="whitespace-nowrap px-4 py-3 sm:px-5">
                                 {{ ($students->currentpage()-1) * $students->perpage() + $loop->index + 1 }}
                             </td>
                             <td  class="px-3 py-3 font-medium text-slate-700 dark:text-navy-100 lg:px-5">
-                                <a href="{{ route('student.profile', ['student' => $student->id ]) }}" > 
-                                    {{ $student->full_name }}
-                                </a>
+                                <div class="flex items-center space-x-4">
+                                    <div class="avatar h-9 w-9">
+                                        <img class="mask is-squircle" src="{{ $student->profile_photo_path }}" alt="avatar">
+                                    </div>
+                                    <span class="font-medium text-slate-700 dark:text-navy-100">
+                                        <a href="{{ $student->path }}"> 
+                                            {{ $student->full_name }} 
+                                        </a>
+                                    </span>
+                                </div>
                             </td>
                             <td  class="whitespace-nowrap px-4 py-3 sm:px-5">
                                 {{ $student->gender }} 
@@ -239,7 +225,7 @@
                                 {{ $student->reg_no }}
                             </td>
                             <td class="whitespace-nowrap px-4 py-3 sm:px-5">
-                            {{ optional($student->current_level)->level }}Level
+                            {{ optional($student->last_level)->level }}Level
                             </td>
                             <td class="whitespace-nowrap px-4 py-3 sm:px-5">
                                 <div class="badge space-x-2.5 px-0 text-{{ $student->email_verified_at ? 'success' : 'error'}}">
@@ -248,11 +234,11 @@
                                 </div>
                             </td>
                             <td class="whitespace-nowrap px-4 py-3 sm:px-5">
-                            &#8358;{{ number_format($student->unpaid) }}
+                            &#8358;{{ number_format($student->total_debt) }}
                             </td>
                             <td class="whitespace-nowrap px-4 py-3 sm:px-5">
                                 <label class="inline-flex items-center">
-                                <input {{ $student->is_active ? "checked": "" }} wire:click="toggleStatus({{$student->id}})"
+                                <input {{ $student->active ? "checked": "" }} wire:click="toggleStatus({{$student->id}})"
                                     class="form-switch h-4 w-8 rounded-full bg-slate-300 before:rounded-full before:bg-slate-50 checked:bg-primary checked:before:bg-white dark:bg-navy-900 dark:before:bg-navy-300 dark:checked:bg-accent dark:checked:before:bg-white" type="checkbox" 
                                 />  
                                 </label>
@@ -261,15 +247,9 @@
                             {{ $student->created_at->format('d-m-Y') }}
                             </td>
                             <td class="whitespace-nowrap px-4 py-3 sm:px-5">
-                                <div class="flex justify-center items-center">
-                                    <a wire:click.prevent="$emitTo('students.student-academic-records', 'showStudentRecords', {{ $student->id }})" class="flex text-info items-center mr-3" href="javascript:;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="check-square" data-lucide="check-square" class="lucide lucide-check-square w-4 h-4 mr-1"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path></svg> Records
-                                    </a>
-                                    <a wire:click.prevent="showDeleteNotification({{ $student->id }})" class="flex items-center text-error" href="javascript:;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="trash-2" data-lucide="trash-2" class="lucide lucide-trash-2 w-4 h-4 mr-1"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg> Delete
-                                    </a>
-                                </div>
-                                
+                                <a wire:click.prevent="confirmDelete({{ $student->id }})" class="flex items-center text-error" href="javascript:;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="trash-2" data-lucide="trash-2" class="lucide lucide-trash-2 w-4 h-4 mr-1"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg> Delete
+                                </a>
                             </td>
                         </tr>
                     @empty
@@ -285,7 +265,7 @@
             </table>
             </div>
 
-            @if($students->count()  > $no_of_records)
+            @if($students->total()  > $no_of_records)
             <div class="flex flex-col justify-between space-y-4 px-4 py-4 sm:flex-row sm:items-center sm:space-y-0 sm:px-5">
                 <div class="flex items-center space-x-2 text-xs+">
                     <span>Show</span>
@@ -309,4 +289,6 @@
             @endif
         </div>
     </div> 
+
+    <x-delete_notification />
 </div>

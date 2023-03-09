@@ -30,7 +30,7 @@ class UserFactory extends Factory
             'middle_name' => $this->faker->firstName(),
             'gender' => $this->faker->randomElement(['Male', 'Female']),
             'address' => $this->faker->address(),
-            'reg_no' => '0'.random_int(7, 9).'/'.random_int(1111, 9999),
+            'reg_no' => '0'.random_int(2, 9).'/'.$this->faker->numberBetween(100, 9999),
             'phone' => $this->faker->phoneNumber(),
             'dob' => now()->subYears(random_int(17, 30)),
             'active' => random_int(0, 1),
