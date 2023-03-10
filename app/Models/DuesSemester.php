@@ -27,9 +27,10 @@ class DuesSemester extends Model
         return $this->belongsTo(Semester::class);
     }
 
-    public function students()
+    public function semesterStudents()
     {
-        return $this->hasMany(SemesterStudent::class, 'level', 'level')->where('semester_id', $this->semester_id);
+        return $this->hasMany(SemesterStudent::class, 'level', 'level')
+                        ->whereColumn('semester_students.semester_id', '=', 'dues_semesters.semester_id');
     }
 
     public function scopeGetSemesterLevelAmount($query, $semester_id, $level) : int

@@ -71,6 +71,11 @@
                                             <a href="{{ $ballot->user->path ?? '#' }}"> 
                                                 {{ $ballot->user->full_name ?? 'n/a' }}
                                             </a>
+                                            @if($ballot->winner)
+                                            <span class="badge rounded-full text-xs h-4 border border-primary text-primary dark:border-accent-light dark:text-accent-light">
+                                                Winner
+                                              </span>
+                                            @endif
                                         </span>
                                     </div>
                                 </td>
@@ -104,12 +109,12 @@
                         </tbody>
                     </table>
                 </div>
-                @if($ballots->total()  > $no_of_records)
+                @if($ballots->total()  > $noOfRecords)
                 <div class="flex flex-col justify-between space-y-4 px-4 py-4 sm:flex-row sm:items-center sm:space-y-0 sm:px-5">
                     <div class="flex items-center space-x-2 text-xs+">
                         <span>Show</span>
                         <label class="block">
-                        <select wire:model="no_of_records" class="form-select rounded-full border border-slate-300 bg-white px-2 py-1 pr-6 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                        <select wire:model="noOfRecords" class="form-select rounded-full border border-slate-300 bg-white px-2 py-1 pr-6 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                             <option>10</option>
                             <option>30</option>
                             <option>50</option>

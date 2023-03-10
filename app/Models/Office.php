@@ -20,7 +20,7 @@ class Office extends Model
 
     public function lastestWinner()
     {
-        return $this->morphOne(Ballot::class, 'ballotable')->latestOfMany()->where('winner', 1);
+        return $this->morphOne(Ballot::class, 'ballotable')->where('winner', 1)->latestOfMany('winner');
     }
 
     public function votes()

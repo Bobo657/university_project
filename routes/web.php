@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Livewire\Semester\SemesterDetails;
 use App\Http\Livewire\Semester\SemesterRegisteredStudents;
 use App\Http\Livewire\Student\RegisteredStudentsList;
@@ -21,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::loginUsingId(1);
 
-Route::get('/', function () {return view('welcome');});
+Route::get('/', [DashboardController::class, 'dashboard']);
 
 Route::view('/dashboard/offices', 'livewire.office.office-details')->name('offices.dashboard');
 Route::view('/awards/dashboard', 'livewire.award.awards-details')->name('awards.dashboard');

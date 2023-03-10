@@ -4,20 +4,22 @@ namespace App\Http\Livewire\Student;
 
 use App\Models\User;
 use Livewire\Component;
-use App\Traits\WithTable;
+use App\Traits\TableWithFilters;
 use Illuminate\Support\Facades\DB;
 
 class RegisteredStudentsList extends Component
 {
-    use WithTable;
+    use TableWithFilters;
 
-    protected $listeners = ['removeSelectedStudent' => 'deleteRecord'];
-    public $action = ['action' => 'removeSelectedStudent'];
+    protected $listeners = ['removeSelectedStudent' => 'deleteStudent'];
+    public $actions = ['action' => 'removeSelectedStudent'];
+    protected $resetProperties = ['search', 'gender', 'noOfRecords', 'emailVerification', 'toDate', 'fromDate',  'active'];
+
     public $stats;
-    public $email_verification;
+    public $emailVerification;
     public $gender;
-    
-    
+    public $active;
+
     public function mount()
     {
         $this->stats = User::select(
@@ -25,24 +27,18 @@ class RegisteredStudentsList extends Component
                 count(*) as total_students,
                 SUM(gender = 'male') AS male_students, 
                 COUNT(IFNULL(email_verified_at, NULL)) AS verified_students
-            "))->first();
-
-           $this->mergeFilters();
+            ")
+        )->first();
     }
 
-    protected function mergeFilters(): void
+    public function deleteStudent()
     {
-        $this->filter = array_merge($this->filter, ['email_verification', 'gender']);
-    }
-
-    public function deleteRecord()
-    {
-        User::findOrFail($this->selected_record_id)->delete();
+        User::findOrFail($this->recordId)->delete();
 
         $this->dispatchBrowserEvent('display-notification', [
             'message' => 'Student has been delete successfully'
         ]);
-       $this->reset('selected_record_id');
+        $this->reset('selected_record_id');
     }
 
     public function toggleStatus(User $user)
@@ -61,23 +57,23 @@ class RegisteredStudentsList extends Component
                                 ->orWhere('email', 'LIKE', "%{$this->search}%")
                                 ->orWhere('phone', 'LIKE', "%{$this->search}%");
                     })
-                    ->when(!empty($this->to_date), function ($q) {
-                                    return $q->where('created_at', '<=', $this->to_date);
+                    ->when(!empty($this->toDate), function ($q) {
+                        return $q->where('created_at', '<=', $this->toDate);
                     })
-                    ->when(!blank($this->email_verification), function ($q) {
-                            $operator = $this->email_verification > 0 ? '!=' : '=';
-                            return $q->where('email_verified_at', $operator, null);
+                    ->when(!blank($this->emailVerification), function ($q) {
+                        $operator = $this->emailVerification > 0 ? '!=' : '=';
+                        return $q->where('email_verified_at', $operator, null);
                     })
                     ->when(!empty($this->gender), function ($q) {
-                            return $q->where('gender', '=', $this->gender);
+                        return $q->where('gender', '=', $this->gender);
                     })
-                    ->when(!empty($this->from_date), function ($q) {
-                                    return $q->where('created_at', '>=', $this->from_date);
+                    ->when(!empty($this->fromDate), function ($q) {
+                        return $q->where('created_at', '>=', $this->fromDate);
                     })
                     ->when(!blank($this->active), function ($q) {
-                                    return $q->where('active', $this->active);
+                        return $q->where('active', $this->active);
                     })
-                    ->paginate($this->no_of_records);
+                    ->paginate($this->noOfRecords);
 
         return view('livewire.student.registered-students-list', ['students' => $students])
                 ->extends('layouts.app')

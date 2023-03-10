@@ -1,130 +1,307 @@
 @extends('layouts.app')
 @section('content')
 
+<div class="mt-6 flex flex-col items-center justify-between space-y-2 text-center sm:flex-row sm:space-y-0 sm:text-left">
+  <div>
+    <h3 class="text-xl font-semibold text-slate-700 dark:text-navy-100">
+      Admin Dashboard
+    </h3>
+    <p class="mt-1 hidden sm:block">Recent meetings in your team</p>
+  </div>
+  <div>
+    <p class="font-medium text-slate-700 dark:text-navy-100">
+      Team Members
+    </p>
+    <div class="mt-2 flex space-x-2">
+      <div class="avatar h-8 w-8">
+        <img class="mask is-squircle" src="images/avatar/avatar-12.jpg" alt="avatar">
+      </div>
+      
+    </div>
+  </div>
+</div>
 
-    @if (session()->has('message'))
-        <div class="col-span-12 grid m-7">
-            <div x-data="{isShow:true}" :class="!isShow 'opacity-0 transition-opacity duration-300'" class="alert flex items-center justify-between overflow-hidden rounded-lg border border-info text-info">
-                <div class="flex">
-                <div class="bg-info p-3 text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                </div>
-                <div class="px-4 py-3 sm:px-5"> {{ session('message') }}</div>
-                </div>
-                <div class="px-2">
-                <button @click="isShow = false; setTimeout(()=>$root.remove(),300)" class="btn h-7 w-7 rounded-full p-0 font-medium text-info hover:bg-info/20 focus:bg-info/20 active:bg-info/25">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-                </div>
-            </div>
-        </div>
-    @endif
+<div class="mt-4 grid grid-cols-12 gap-4 transition-all duration-[.25s] sm:mt-5 sm:gap-5 lg:mt-6 lg:gap-6">
+  
+  <div class="col-span-12 lg:col-span-8">
+    @livewire('semester.created-semesters-list')
 
-    <div class="mt-4 grid grid-cols-1 gap-4 transition-all duration-[.25s] sm:mt-5 sm:grid-cols-2 sm:gap-5 lg:mt-6 lg:grid-cols-4 lg:gap-6">
-        <div class="card p-4 sm:col-span-2 sm:p-5">
-          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6">
-            <div class="flex items-center space-x-4 rounded-2xl border border-slate-150 p-4 dark:border-navy-600">
-              <div class="mask is-star-2 flex h-12 w-12 items-center justify-center bg-warning/10 dark:bg-warning">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-warning dark:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                </svg>
-              </div>
-              <div class="font-inter">
-                <p class="text-base font-semibold text-slate-700 dark:text-navy-100">
-                  203
-                </p>
-                <p>All Posts</p>
-              </div>
-            </div>
-            <div class="flex items-center space-x-4 rounded-2xl border border-slate-150 p-4 dark:border-navy-600">
-              <div class="mask is-star-2 flex h-12 w-12 items-center justify-center bg-primary/10 dark:bg-accent">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary dark:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                </svg>
-              </div>
-              <div class="font-inter">
-                <p class="text-base font-semibold text-slate-700 dark:text-navy-100">
-                  16
-                </p>
-                <p>Post Writers</p>
-              </div>
-            </div>
-            <div class="flex items-center space-x-4 rounded-2xl border border-slate-150 p-4 dark:border-navy-600">
-              <div class="mask is-star-2 flex h-12 w-12 items-center justify-center bg-secondary/10 dark:bg-secondary">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-secondary dark:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                </svg>
-              </div>
-              <div class="font-inter">
-                <p class="text-base font-semibold text-slate-700 dark:text-navy-100">
-                  12.3k
-                </p>
-                <p>Likes</p>
-              </div>
-            </div>
-            <div class="flex items-center space-x-4 rounded-2xl border border-slate-150 p-4 dark:border-navy-600">
-              <div class="mask is-star-2 flex h-12 w-12 items-center justify-center bg-success/10 dark:bg-success">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-success dark:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
-                </svg>
-              </div>
-              <div class="font-inter">
-                <p class="text-base font-semibold text-slate-700 dark:text-navy-100">
-                  3k
-                </p>
-                <p>Comments</p>
-              </div>
-            </div>
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5 lg:gap-6 mt-4">
+      <div class="card items-center justify-between lg:flex-row">
+        <div class="flex flex-col items-center p-4 text-center sm:p-5 lg:flex-row lg:space-x-4 lg:text-left">
+          <div class="avatar h-18 w-18 lg:h-12 lg:w-12">
+            <img class="rounded-full" src="images/avatar/avatar-20.jpg" alt="avatar">
           </div>
+          <div class="mt-2 lg:mt-0">
+            <div class="flex items-center justify-center space-x-1">
+              <h4 class="text-base font-medium text-slate-700 line-clamp-1 dark:text-navy-100">
+                Konnor Guzman
+              </h4>
+              <button class="btn hidden h-6 rounded-full px-2 text-xs font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25 lg:inline-flex">
+                Follow
+              </button>
+            </div>
+            <p class="text-xs+">React Developer</p>
+          </div>
+          <button class="btn mt-4 rounded-full border border-slate-200 font-medium text-primary hover:bg-slate-150 focus:bg-slate-150 active:bg-slate-150/80 dark:border-navy-500 dark:text-accent-light dark:hover:bg-navy-500 dark:focus:bg-navy-500 dark:active:bg-navy-500/90 lg:hidden">
+            Follow
+          </button>
         </div>
-        <div class="card">
-          <div class="mt-3.5 flex grow items-baseline justify-between px-4 sm:px-5">
-            <div>
-              <p class="font-medium">Visitors</p>
-              <p class="text-2xl font-semibold text-slate-700 dark:text-navy-100">
-                45k
-              </p>
-            </div>
-            <div class="badge space-x-1 rounded-full bg-success/10 py-1 px-1.5 text-success dark:bg-success/15">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clip-rule="evenodd"></path>
-              </svg>
-              <span>46%</span>
-            </div>
+        
+      </div>
+      <div class="card items-center justify-between lg:flex-row">
+        <div class="flex flex-col items-center p-4 text-center sm:p-5 lg:flex-row lg:space-x-4 lg:text-left">
+          <div class="avatar h-18 w-18 lg:h-12 lg:w-12">
+            <img class="rounded-full" src="images/avatar/avatar-19.jpg" alt="avatar">
           </div>
-          <div class="ax-transparent-gridline">
-            <div x-init="$nextTick(() => { $el._x_chart = new ApexCharts($el,pages.charts.blogVisitors); $el._x_chart.render() });" style="min-height: 150px;"><div id="apexchartsqmn2imxd" class="apexcharts-canvas apexchartsqmn2imxd apexcharts-theme-light" style="width: 290px; height: 150px;"><svg id="SvgjsSvg1408" width="290" height="150" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg apexcharts-zoomable" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;"><g id="SvgjsG1410" class="apexcharts-inner apexcharts-graphical" transform="translate(0, 10)"><defs id="SvgjsDefs1409"><clipPath id="gridRectMaskqmn2imxd"><rect id="SvgjsRect1415" width="296" height="135" x="-3" y="-1" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="forecastMaskqmn2imxd"></clipPath><clipPath id="nonForecastMaskqmn2imxd"></clipPath><clipPath id="gridRectMarkerMaskqmn2imxd"><rect id="SvgjsRect1416" width="294" height="137" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><linearGradient id="SvgjsLinearGradient1421" x1="0" y1="0" x2="0" y2="1"><stop id="SvgjsStop1422" stop-opacity="0.35" stop-color="rgba(16,185,129,0.35)" offset="0.2"></stop><stop id="SvgjsStop1423" stop-opacity="0.05" stop-color="rgba(255,255,255,0.05)" offset="1"></stop><stop id="SvgjsStop1424" stop-opacity="0.05" stop-color="rgba(255,255,255,0.05)" offset="1"></stop><stop id="SvgjsStop1425" stop-opacity="0.35" stop-color="rgba(16,185,129,0.35)" offset="1"></stop></linearGradient></defs><line id="SvgjsLine1414" x1="0" y1="0" x2="0" y2="133" stroke="#b6b6b6" stroke-dasharray="3" stroke-linecap="butt" class="apexcharts-xcrosshairs" x="0" y="0" width="1" height="133" fill="#b1b9c4" filter="none" fill-opacity="0.9" stroke-width="1"></line><g id="SvgjsG1428" class="apexcharts-xaxis" transform="translate(0, 0)"><g id="SvgjsG1429" class="apexcharts-xaxis-texts-g" transform="translate(0, -4)"></g></g><g id="SvgjsG1438" class="apexcharts-grid"><g id="SvgjsG1439" class="apexcharts-gridlines-horizontal"><line id="SvgjsLine1441" x1="0" y1="0" x2="290" y2="0" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1442" x1="0" y1="26.6" x2="290" y2="26.6" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1443" x1="0" y1="53.2" x2="290" y2="53.2" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1444" x1="0" y1="79.80000000000001" x2="290" y2="79.80000000000001" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1445" x1="0" y1="106.4" x2="290" y2="106.4" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1446" x1="0" y1="133" x2="290" y2="133" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line></g><g id="SvgjsG1440" class="apexcharts-gridlines-vertical"></g><line id="SvgjsLine1448" x1="0" y1="133" x2="290" y2="133" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line><line id="SvgjsLine1447" x1="0" y1="1" x2="0" y2="133" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line></g><g id="SvgjsG1417" class="apexcharts-area-series apexcharts-plot-series"><g id="SvgjsG1418" class="apexcharts-series" seriesName="Visitors" data:longestSeries="true" rel="1" data:realIndex="0"><path id="SvgjsPath1426" d="M 0 133L 0 66.49999999999999C 16.916666666666668 66.49999999999999 31.416666666666668 106.39999999999999 48.333333333333336 106.39999999999999C 65.25 106.39999999999999 79.75 39.89999999999999 96.66666666666667 39.89999999999999C 113.58333333333334 39.89999999999999 128.08333333333334 79.79999999999998 145 79.79999999999998C 161.91666666666666 79.79999999999998 176.41666666666669 13.299999999999983 193.33333333333334 13.299999999999983C 210.25 13.299999999999983 224.75 87.77999999999999 241.66666666666666 87.77999999999999C 258.5833333333333 87.77999999999999 273.0833333333333 39.89999999999999 290 39.89999999999999C 290 39.89999999999999 290 39.89999999999999 290 133M 290 39.89999999999999z" fill="url(#SvgjsLinearGradient1421)" fill-opacity="1" stroke-opacity="1" stroke-linecap="butt" stroke-width="0" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMaskqmn2imxd)" pathTo="M 0 133L 0 66.49999999999999C 16.916666666666668 66.49999999999999 31.416666666666668 106.39999999999999 48.333333333333336 106.39999999999999C 65.25 106.39999999999999 79.75 39.89999999999999 96.66666666666667 39.89999999999999C 113.58333333333334 39.89999999999999 128.08333333333334 79.79999999999998 145 79.79999999999998C 161.91666666666666 79.79999999999998 176.41666666666669 13.299999999999983 193.33333333333334 13.299999999999983C 210.25 13.299999999999983 224.75 87.77999999999999 241.66666666666666 87.77999999999999C 258.5833333333333 87.77999999999999 273.0833333333333 39.89999999999999 290 39.89999999999999C 290 39.89999999999999 290 39.89999999999999 290 133M 290 39.89999999999999z" pathFrom="M -1 159.6L -1 159.6L 48.333333333333336 159.6L 96.66666666666667 159.6L 145 159.6L 193.33333333333334 159.6L 241.66666666666666 159.6L 290 159.6"></path><path id="SvgjsPath1427" d="M 0 66.49999999999999C 16.916666666666668 66.49999999999999 31.416666666666668 106.39999999999999 48.333333333333336 106.39999999999999C 65.25 106.39999999999999 79.75 39.89999999999999 96.66666666666667 39.89999999999999C 113.58333333333334 39.89999999999999 128.08333333333334 79.79999999999998 145 79.79999999999998C 161.91666666666666 79.79999999999998 176.41666666666669 13.299999999999983 193.33333333333334 13.299999999999983C 210.25 13.299999999999983 224.75 87.77999999999999 241.66666666666666 87.77999999999999C 258.5833333333333 87.77999999999999 273.0833333333333 39.89999999999999 290 39.89999999999999" fill="none" fill-opacity="1" stroke="#10b981" stroke-opacity="1" stroke-linecap="butt" stroke-width="2" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMaskqmn2imxd)" pathTo="M 0 66.49999999999999C 16.916666666666668 66.49999999999999 31.416666666666668 106.39999999999999 48.333333333333336 106.39999999999999C 65.25 106.39999999999999 79.75 39.89999999999999 96.66666666666667 39.89999999999999C 113.58333333333334 39.89999999999999 128.08333333333334 79.79999999999998 145 79.79999999999998C 161.91666666666666 79.79999999999998 176.41666666666669 13.299999999999983 193.33333333333334 13.299999999999983C 210.25 13.299999999999983 224.75 87.77999999999999 241.66666666666666 87.77999999999999C 258.5833333333333 87.77999999999999 273.0833333333333 39.89999999999999 290 39.89999999999999" pathFrom="M -1 159.6L -1 159.6L 48.333333333333336 159.6L 96.66666666666667 159.6L 145 159.6L 193.33333333333334 159.6L 241.66666666666666 159.6L 290 159.6"></path><g id="SvgjsG1419" class="apexcharts-series-markers-wrap" data:realIndex="0"><g class="apexcharts-series-markers"><circle id="SvgjsCircle1454" r="0" cx="0" cy="0" class="apexcharts-marker wiweh6skr no-pointer-events" stroke="#ffffff" fill="#10b981" fill-opacity="1" stroke-width="2" stroke-opacity="0.9" default-marker-size="0"></circle></g></g></g><g id="SvgjsG1420" class="apexcharts-datalabels" data:realIndex="0"></g></g><line id="SvgjsLine1449" x1="0" y1="0" x2="290" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line><line id="SvgjsLine1450" x1="0" y1="0" x2="290" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line><g id="SvgjsG1451" class="apexcharts-yaxis-annotations"></g><g id="SvgjsG1452" class="apexcharts-xaxis-annotations"></g><g id="SvgjsG1453" class="apexcharts-point-annotations"></g><rect id="SvgjsRect1455" width="0" height="0" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fefefe" class="apexcharts-zoom-rect"></rect><rect id="SvgjsRect1456" width="0" height="0" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fefefe" class="apexcharts-selection-rect"></rect></g><rect id="SvgjsRect1413" width="0" height="0" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fefefe"></rect><g id="SvgjsG1437" class="apexcharts-yaxis" rel="0" transform="translate(-18, 0)"></g><g id="SvgjsG1411" class="apexcharts-annotations"></g></svg><div class="apexcharts-legend" style="max-height: 75px;"></div><div class="apexcharts-tooltip apexcharts-theme-light"><div class="apexcharts-tooltip-title" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px;"></div><div class="apexcharts-tooltip-series-group" style="order: 1;"><span class="apexcharts-tooltip-marker" style="background-color: rgb(16, 185, 129);"></span><div class="apexcharts-tooltip-text" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px;"><div class="apexcharts-tooltip-y-group"><span class="apexcharts-tooltip-text-y-label"></span><span class="apexcharts-tooltip-text-y-value"></span></div><div class="apexcharts-tooltip-goals-group"><span class="apexcharts-tooltip-text-goals-label"></span><span class="apexcharts-tooltip-text-goals-value"></span></div><div class="apexcharts-tooltip-z-group"><span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span></div></div></div></div><div class="apexcharts-xaxistooltip apexcharts-xaxistooltip-bottom apexcharts-theme-light"><div class="apexcharts-xaxistooltip-text" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px;"></div></div><div class="apexcharts-yaxistooltip apexcharts-yaxistooltip-0 apexcharts-yaxistooltip-left apexcharts-theme-light"><div class="apexcharts-yaxistooltip-text"></div></div></div></div>
+          <div class="mt-2 lg:mt-0">
+            <div class="flex items-center justify-center space-x-1">
+              <h4 class="text-base font-medium text-slate-700 line-clamp-1 dark:text-navy-100">
+                Travis Fuller
+              </h4>
+              <button class="btn hidden h-6 rounded-full px-2 text-xs font-medium text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25 lg:inline-flex">
+                Follow
+              </button>
+            </div>
+            <p class="text-xs+">Backend Developer</p>
           </div>
+          <button class="btn mt-4 rounded-full border border-slate-200 font-medium text-primary hover:bg-slate-150 focus:bg-slate-150 active:bg-slate-150/80 dark:border-navy-500 dark:text-accent-light dark:hover:bg-navy-500 dark:focus:bg-navy-500 dark:active:bg-navy-500/90 lg:hidden">
+            Follow
+          </button>
         </div>
+        
+      </div>
+    </div>
 
-        <div class="card">
-          <div class="mt-3.5 flex grow items-baseline justify-between px-4 sm:px-5">
-            <div>
-              <p class="font-medium">Members</p>
-              <p class="text-2xl font-semibold text-slate-700 dark:text-navy-100">
-                12k
-              </p>
-            </div>
-            <div class="badge space-x-1 rounded-full bg-error/10 py-1 px-1.5 text-error dark:bg-error/15">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M12 13a1 1 0 100 2h5a1 1 0 001-1V9a1 1 0 10-2 0v2.586l-4.293-4.293a1 1 0 00-1.414 0L8 9.586 3.707 5.293a1 1 0 00-1.414 1.414l5 5a1 1 0 001.414 0L11 9.414 14.586 13H12z" clip-rule="evenodd"></path>
-              </svg>
-              <span>16%</span>
-            </div>
-          </div>
-          <div class="ax-transparent-gridline">
-            <div x-init="$nextTick(() => { $el._x_chart = new ApexCharts($el,pages.charts.blogMembers); $el._x_chart.render() });" style="min-height: 150px;"><div id="apexcharts4hfxnacf" class="apexcharts-canvas apexcharts4hfxnacf apexcharts-theme-light" style="width: 290px; height: 150px;"><svg id="SvgjsSvg1458" width="290" height="150" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev" class="apexcharts-svg apexcharts-zoomable" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;"><g id="SvgjsG1460" class="apexcharts-inner apexcharts-graphical" transform="translate(0, 10)"><defs id="SvgjsDefs1459"><clipPath id="gridRectMask4hfxnacf"><rect id="SvgjsRect1465" width="296" height="135" x="-3" y="-1" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="forecastMask4hfxnacf"></clipPath><clipPath id="nonForecastMask4hfxnacf"></clipPath><clipPath id="gridRectMarkerMask4hfxnacf"><rect id="SvgjsRect1466" width="294" height="137" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><linearGradient id="SvgjsLinearGradient1471" x1="0" y1="0" x2="0" y2="1"><stop id="SvgjsStop1472" stop-opacity="0.35" stop-color="rgba(255,87,36,0.35)" offset="0.2"></stop><stop id="SvgjsStop1473" stop-opacity="0.05" stop-color="rgba(255,255,255,0.05)" offset="1"></stop><stop id="SvgjsStop1474" stop-opacity="0.05" stop-color="rgba(255,255,255,0.05)" offset="1"></stop><stop id="SvgjsStop1475" stop-opacity="0.35" stop-color="rgba(255,87,36,0.35)" offset="1"></stop></linearGradient></defs><line id="SvgjsLine1464" x1="0" y1="0" x2="0" y2="133" stroke="#b6b6b6" stroke-dasharray="3" stroke-linecap="butt" class="apexcharts-xcrosshairs" x="0" y="0" width="1" height="133" fill="#b1b9c4" filter="none" fill-opacity="0.9" stroke-width="1"></line><g id="SvgjsG1478" class="apexcharts-xaxis" transform="translate(0, 0)"><g id="SvgjsG1479" class="apexcharts-xaxis-texts-g" transform="translate(0, -4)"></g></g><g id="SvgjsG1487" class="apexcharts-grid"><g id="SvgjsG1488" class="apexcharts-gridlines-horizontal"><line id="SvgjsLine1490" x1="0" y1="0" x2="290" y2="0" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1491" x1="0" y1="26.6" x2="290" y2="26.6" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1492" x1="0" y1="53.2" x2="290" y2="53.2" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1493" x1="0" y1="79.80000000000001" x2="290" y2="79.80000000000001" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1494" x1="0" y1="106.4" x2="290" y2="106.4" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line><line id="SvgjsLine1495" x1="0" y1="133" x2="290" y2="133" stroke="#e0e0e0" stroke-dasharray="0" stroke-linecap="butt" class="apexcharts-gridline"></line></g><g id="SvgjsG1489" class="apexcharts-gridlines-vertical"></g><line id="SvgjsLine1497" x1="0" y1="133" x2="290" y2="133" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line><line id="SvgjsLine1496" x1="0" y1="1" x2="0" y2="133" stroke="transparent" stroke-dasharray="0" stroke-linecap="butt"></line></g><g id="SvgjsG1467" class="apexcharts-area-series apexcharts-plot-series"><g id="SvgjsG1468" class="apexcharts-series" seriesName="Members" data:longestSeries="true" rel="1" data:realIndex="0"><path id="SvgjsPath1476" d="M 0 133L 0 23.275000000000006C 20.299999999999997 23.275000000000006 37.7 106.4 58 106.4C 78.3 106.4 95.7 39.900000000000006 116 39.900000000000006C 136.3 39.900000000000006 153.7 123.025 174 123.025C 194.3 123.025 211.7 53.19999999999999 232 53.19999999999999C 252.3 53.19999999999999 269.7 99.75 290 99.75C 290 99.75 290 99.75 290 133M 290 99.75z" fill="url(#SvgjsLinearGradient1471)" fill-opacity="1" stroke-opacity="1" stroke-linecap="butt" stroke-width="0" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMask4hfxnacf)" pathTo="M 0 133L 0 23.275000000000006C 20.299999999999997 23.275000000000006 37.7 106.4 58 106.4C 78.3 106.4 95.7 39.900000000000006 116 39.900000000000006C 136.3 39.900000000000006 153.7 123.025 174 123.025C 194.3 123.025 211.7 53.19999999999999 232 53.19999999999999C 252.3 53.19999999999999 269.7 99.75 290 99.75C 290 99.75 290 99.75 290 133M 290 99.75z" pathFrom="M -1 239.4L -1 239.4L 58 239.4L 116 239.4L 174 239.4L 232 239.4L 290 239.4"></path><path id="SvgjsPath1477" d="M 0 23.275000000000006C 20.299999999999997 23.275000000000006 37.7 106.4 58 106.4C 78.3 106.4 95.7 39.900000000000006 116 39.900000000000006C 136.3 39.900000000000006 153.7 123.025 174 123.025C 194.3 123.025 211.7 53.19999999999999 232 53.19999999999999C 252.3 53.19999999999999 269.7 99.75 290 99.75" fill="none" fill-opacity="1" stroke="#ff5724" stroke-opacity="1" stroke-linecap="butt" stroke-width="2" stroke-dasharray="0" class="apexcharts-area" index="0" clip-path="url(#gridRectMask4hfxnacf)" pathTo="M 0 23.275000000000006C 20.299999999999997 23.275000000000006 37.7 106.4 58 106.4C 78.3 106.4 95.7 39.900000000000006 116 39.900000000000006C 136.3 39.900000000000006 153.7 123.025 174 123.025C 194.3 123.025 211.7 53.19999999999999 232 53.19999999999999C 252.3 53.19999999999999 269.7 99.75 290 99.75" pathFrom="M -1 239.4L -1 239.4L 58 239.4L 116 239.4L 174 239.4L 232 239.4L 290 239.4"></path><g id="SvgjsG1469" class="apexcharts-series-markers-wrap" data:realIndex="0"><g class="apexcharts-series-markers"><circle id="SvgjsCircle1503" r="0" cx="0" cy="0" class="apexcharts-marker w5lsernm2 no-pointer-events" stroke="#ffffff" fill="#ff5724" fill-opacity="1" stroke-width="2" stroke-opacity="0.9" default-marker-size="0"></circle></g></g></g><g id="SvgjsG1470" class="apexcharts-datalabels" data:realIndex="0"></g></g><line id="SvgjsLine1498" x1="0" y1="0" x2="290" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" stroke-linecap="butt" class="apexcharts-ycrosshairs"></line><line id="SvgjsLine1499" x1="0" y1="0" x2="290" y2="0" stroke-dasharray="0" stroke-width="0" stroke-linecap="butt" class="apexcharts-ycrosshairs-hidden"></line><g id="SvgjsG1500" class="apexcharts-yaxis-annotations"></g><g id="SvgjsG1501" class="apexcharts-xaxis-annotations"></g><g id="SvgjsG1502" class="apexcharts-point-annotations"></g><rect id="SvgjsRect1504" width="0" height="0" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fefefe" class="apexcharts-zoom-rect"></rect><rect id="SvgjsRect1505" width="0" height="0" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fefefe" class="apexcharts-selection-rect"></rect></g><rect id="SvgjsRect1463" width="0" height="0" x="0" y="0" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fefefe"></rect><g id="SvgjsG1486" class="apexcharts-yaxis" rel="0" transform="translate(-18, 0)"></g><g id="SvgjsG1461" class="apexcharts-annotations"></g></svg><div class="apexcharts-legend" style="max-height: 75px;"></div><div class="apexcharts-tooltip apexcharts-theme-light"><div class="apexcharts-tooltip-title" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px;"></div><div class="apexcharts-tooltip-series-group" style="order: 1;"><span class="apexcharts-tooltip-marker" style="background-color: rgb(255, 87, 36);"></span><div class="apexcharts-tooltip-text" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px;"><div class="apexcharts-tooltip-y-group"><span class="apexcharts-tooltip-text-y-label"></span><span class="apexcharts-tooltip-text-y-value"></span></div><div class="apexcharts-tooltip-goals-group"><span class="apexcharts-tooltip-text-goals-label"></span><span class="apexcharts-tooltip-text-goals-value"></span></div><div class="apexcharts-tooltip-z-group"><span class="apexcharts-tooltip-text-z-label"></span><span class="apexcharts-tooltip-text-z-value"></span></div></div></div></div><div class="apexcharts-xaxistooltip apexcharts-xaxistooltip-bottom apexcharts-theme-light"><div class="apexcharts-xaxistooltip-text" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px;"></div></div><div class="apexcharts-yaxistooltip apexcharts-yaxistooltip-0 apexcharts-yaxistooltip-left apexcharts-theme-light"><div class="apexcharts-yaxistooltip-text"></div></div></div></div>
-          </div>
+    <div class="card px-4 pb-4 sm:px-5 mt-3">
+      <div class="my-3 flex h-8 items-center justify-between">
+        <h2 class="font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100 lg:text-base">
+          Ping &amp; Linespace
+        </h2>
+        <label class="inline-flex items-center space-x-2">
+          <span class="text-xs text-slate-400 dark:text-navy-300">Code</span>
+          <input @change="helpers.toggleCode" class="form-switch h-5 w-10 rounded-full bg-slate-300 before:rounded-full before:bg-slate-50 checked:bg-primary checked:before:bg-white dark:bg-navy-900 dark:before:bg-navy-300 dark:checked:bg-accent dark:checked:before:bg-white" type="checkbox">
+        </label>
+      </div>
+      <div class="max-w-xl">
+        <p>
+          The timeline displays a list of events in chronological order.
+          Check out code for detail of usage.
+        </p>
+        <div class="mt-5">
+          <ol class="timeline line-space max-w-sm">
+            <li class="timeline-item">
+              <div class="timeline-item-point rounded-full bg-slate-300 dark:bg-navy-400"></div>
+              <div class="timeline-item-content flex-1 pl-4 sm:pl-8">
+                <div class="flex flex-col justify-between pb-2 sm:flex-row sm:pb-0">
+                  <p class="pb-2 font-medium leading-none text-slate-600 dark:text-navy-100 sm:pb-0">
+                    User Photo Changed
+                  </p>
+                  <span class="text-xs text-slate-400 dark:text-navy-300">12 minute ago</span>
+                </div>
+                <p class="py-1">John Doe changed his avatar photo</p>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-item-point rounded-full bg-accent dark:bg-accent"></div>
+              <div class="timeline-item-content flex-1 pl-4 sm:pl-8">
+                <div class="flex flex-col justify-between pb-2 sm:flex-row sm:pb-0">
+                  <p class="pb-2 font-medium leading-none text-slate-600 dark:text-navy-100 sm:pb-0">
+                    Video Added
+                  </p>
+                  <span class="text-xs text-slate-400 dark:text-navy-300">1 hour ago</span>
+                </div>
+                <p class="py-1">Mores Clarke added new video</p>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-item-point rounded-full bg-success">
+                <span class="inline-flex h-full w-full animate-ping rounded-full bg-success opacity-80"></span>
+              </div>
+              <div class="timeline-item-content flex-1 pl-4 sm:pl-8">
+                <div class="flex flex-col justify-between pb-2 sm:flex-row sm:pb-0">
+                  <p class="pb-2 font-medium leading-none text-slate-600 dark:text-navy-100 sm:pb-0">
+                    Design Completed
+                  </p>
+                  <span class="text-xs text-slate-400 dark:text-navy-300">3 hours ago</span>
+                </div>
+                <p class="py-1">
+                  Robert Nolan completed the design of the CRM application
+                </p>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-item-point rounded-full bg-warning"></div>
+              <div class="timeline-item-content flex-1 pl-4 sm:pl-8">
+                <div class="flex flex-col justify-between pb-2 sm:flex-row sm:pb-0">
+                  <p class="pb-2 font-medium leading-none text-slate-600 dark:text-navy-100 sm:pb-0">
+                    ER Diagram
+                  </p>
+                  <span class="text-xs text-slate-400 dark:text-navy-300">a day ago</span>
+                </div>
+                <p class="py-1">Team completed the ER diagram app</p>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-item-point rounded-full bg-error"></div>
+              <div class="timeline-item-content flex-1 pl-4 sm:pl-8">
+                <div class="flex flex-col justify-between pb-2 sm:flex-row sm:pb-0">
+                  <p class="pb-2 font-medium leading-none text-slate-600 dark:text-navy-100 sm:pb-0">
+                    Weekly Report
+                  </p>
+                  <span class="text-xs text-slate-400 dark:text-navy-300">a day ago</span>
+                </div>
+                <p class="py-1">The weekly report was uploaded</p>
+              </div>
+            </li>
+          </ol>
         </div>
       </div>
     </div>
-        
-    @livewire('semester.create-new-semester-form');
-    @livewire('semester.created-semesters-list')
 
-    <x-delete_notification />
+  </div>
+
+  <div class="col-span-12 lg:col-span-4">
+    <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-5 lg:grid-cols-2 mb-4">
+      <div class="rounded-lg bg-slate-150 p-4 dark:bg-navy-700">
+        <div class="flex justify-between space-x-1">
+          <p class="text-xl font-semibold text-slate-700 dark:text-navy-100">
+           {{ number_format($stats->total_students) }}
+          </p>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary dark:text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87"></path><path d="M16 3.13a4 4 0 010 7.75"></path>
+          </svg>
+        </div>
+        <p class="mt-1 text-xs+">Total Students</p>
+      </div>
+      <div class="rounded-lg bg-slate-150 p-4 dark:bg-navy-700">
+        <div class="flex justify-between">
+          <p
+            class="text-xl font-semibold text-slate-700 dark:text-navy-100"
+          >
+            {{ number_format($stats->male_students) }}
+          </p>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path fill="#000" d="M12,2c-4.41,0-8,3.59-8,8s3.59,8,8,8s8-3.59,8-8S16.41,2,12,2z M12,16c-2.76,0-5-2.24-5-5s2.24-5,5-5s5,2.24,5,5S14.76,16,12,16z"></path>
+            <circle fill="#000" cx="12" cy="8" r="2"></circle>
+          </svg>
+        </div>
+        <p class="mt-1 text-xs+">Male Students</p>
+      </div>
+      <div class="rounded-lg bg-slate-150 p-4 dark:bg-navy-700">
+        <div class="flex justify-between">
+          <p
+            class="text-xl font-semibold text-slate-700 dark:text-navy-100"
+          >
+          {{ number_format($stats->female_students) }}
+          </p>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-8 w-8 text-secondary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="7"></circle>
+            <path d="M16.2839 15.9556C14.4567 17.7828 11.5433 17.7828 9.71613 15.9556M7.50539 13.7449C6.15421 15.0961 6.15421 17.1758 7.50539 18.527C8.85657 19.8782 10.9363 19.8782 12.2874 18.527M12.2874 18.527C13.6386 19.8782 15.7183 19.8782 17.0695 18.527M16.2839 15.9556C17.6351 14.6044 17.6351 12.5247 16.2839 11.1735C14.9327 9.82236 12.853 9.82236 11.5018 11.1735M16.2839 15.9556C17.106 14.1337 16.4565 11.9752 14.6345 11.1532C12.8126 10.3311 10.6541 10.9807 9.83198 12.8027M9.71613 15.9556C8.89402 14.1337 9.54355 11.9752 11.3655 11.1532C13.1874 10.3311 15.3459 10.9807 16.168 12.8027"></path>
+          </svg>
+        </div>
+        <p class="mt-1 text-xs+">Female Students</p>
+      </div>
+      <div class="rounded-lg bg-slate-150 p-4 dark:bg-navy-700">
+        <div class="flex justify-between">
+          <p
+            class="text-xl font-semibold text-slate-700 dark:text-navy-100"
+          >
+          {{ number_format($stats->inactive_students) }}
+          </p>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-7 w-7 text-error"
+            fill="none"
+            viewbox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+          <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="18" y1="8" x2="23" y2="13"></line><line x1="23" y1="8" x2="18" y2="13"></line>
+          </svg>
+        </div>
+        <p class="mt-1 text-xs+">Suspended Students</p>
+      </div>
+      <div class="rounded-lg bg-slate-150 p-4 dark:bg-navy-700">
+        <div class="flex justify-between space-x-1">
+          <p
+            class="text-xl font-semibold text-slate-700 dark:text-navy-100"
+          >
+          {{ number_format($stats->unverified_students) }}
+          </p>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-7 w-7 text-warning"
+            fill="none"
+            viewbox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          
+        </div>
+        <p class="mt-1 text-xs+">Unverified Accounts</p>
+      </div>
+      <div class="rounded-lg bg-slate-150 p-4 dark:bg-navy-700">
+        <div class="flex justify-between">
+          <p
+            class="text-xl font-semibold text-slate-700 dark:text-navy-100"
+          >
+          {{ number_format($stats->graduated_students) }}
+          </p>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-7 w-7 text-success"
+            fill="none"
+            viewbox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline>
+          </svg>
+        </div>
+        <p class="mt-1 text-xs+">Graduated Students</p>
+      </div>
+    </div>
+
+    <div class="is-scrollbar-hidden mt-4 min-w-full overflow-x-auto">
+      <table class="w-full font-inter">
+        <tbody>
+          @foreach($levelsStats as $stat)
+          <tr>
+            <td class="whitespace-nowrap py-2">
+              <div class="flex items-center space-x-2">
+                <div class="h-3.5 w-3.5 rounded-full border-2 border-{{$colors[$loop->index]}} dark:border-accent"
+                ></div>
+                <p class="font-medium tracking-wide text-slate-700 dark:text-navy-100">
+                  {{ $stat->level }}Level
+                </p>
+              </div>
+            </td>
+            <td class="whitespace-nowrap py-2 text-right">
+              <p class="font-medium text-slate-700 dark:text-navy-100">
+                {{ number_format($stat->count) }} 
+              </p>
+            </td>
+            <td class="whitespace-nowrap py-2 text-right">{{ $stat->percent }}%</td>
+          </tr>
+          @endforeach
+
+        </tbody>
+      </table>
+    </div>
+
+    @livewire('semester.create-new-semester-form');
+  </div>
+</div>
+
+
+
+    
+        
+   
+    
+
+    
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Office;
 
 use App\Models\Office;
 use Livewire\Component;
+use Illuminate\Support\Facades\Validator;
 
 class CreateNewOfficeForm extends Component
 {
@@ -11,17 +12,25 @@ class CreateNewOfficeForm extends Component
 
     public function createOffice()
     {
-        Office::create($this->validate(
-            ['name' => 'required|unique:offices,name'],
-            ['name.unique' => 'Office already exist in the data base'],
-            ['name' => 'Office']
-        ));
+        $this->resetValidation();
+
+        Validator::make(['name' => $this->name], [
+            'name' => 'required|unique:offices,name'
+        ], [
+            'name.required' => 'The office name is required.',
+            'name.unique' => 'The office name already exists.'
+        ])->validate();
+
+        Office::create([
+            'name' => $this->name
+        ]);
 
         $this->dispatchBrowserEvent('display-notification', [
-            'message' => 'Office has been created successfully'
+            'message' => 'The office has been created successfully.'
         ]);
 
         $this->emit('office_updated');
+        $this->reset(['name']);
     }
 
     public function render()

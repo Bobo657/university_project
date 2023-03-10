@@ -9,7 +9,10 @@ class SemesterObserver
 
     public function creating(Semester $semester)
     {
-        abort_if(Semester::active(), 403, $message = "It is not possible to create a new semester while there is already an ongoing semester.");
+        // abort_if(Semester::active(), 403, $message = "It is not possible to create a new semester while there is already an ongoing semester.");
+        cache()->forget('active_semester');
+        Semester::where('current', true)->update(['current' => false]);
+        $semester->current = true;
     }
 
     /**
@@ -17,7 +20,7 @@ class SemesterObserver
      */
     public function created(Semester $semester): void
     {
-        //
+       
     }
 
     /**

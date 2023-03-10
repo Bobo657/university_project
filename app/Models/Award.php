@@ -20,7 +20,7 @@ class Award extends Model
 
     public function lastestWinner()
     {
-        return $this->morphOne(Ballot::class, 'ballotable')->latestOfMany()->where('ballots.winner', true);
+        return $this->morphOne(Ballot::class, 'ballotable')->where('winner', 1)->latestOfMany('winner');
     }
 
     public function votes()

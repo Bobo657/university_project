@@ -13,25 +13,42 @@ class SemesterLevelDues extends Component
 
     public function mount(Semester $semester)
     {
-        $this->dues = DuesSemester::withCount('students')
-                        ->withSum([ 'students as debts' => fn ($query) => $query->where('paid', '0')], 'amount')
-                        ->withSum([ 'students as revenue' => fn ($query) => $query->where('paid', '1')], 'amount')
-                        ->where('semester_id', $semester->id)->get();
+       
+        $this->dues =  $this->getDuesStats($semester); 
+        
+        $total_students = $this->dues->sum('semester_students_count');
 
-        $total_students = $this->dues->sum('students_count');
-
-        $this->dues->map(function ($due) use ($total_students){
-            $due->percent = $due->students_count > 0 ?  round(($due->students_count * 100)/$total_students)  : 0;
-            $ratio = $due->students_count > 0 ?  round(($due->students_count / $total_students) * 12) : 0;
+        $this->dues->each(function ($due) use ($total_students){
+            $students_count = $due->semester_students_count;
+            
+            $due->percent = $students_count > 0 ?  round(($students_count * 100)/$total_students)  : 0;
+            $ratio = $students_count > 0 ?  round(($students_count / $total_students) * 12) : 0;
 
             $due->ratio = (int)$ratio;
-            return $due;
         });
 
+        $this->dues;
     }
 
     public function render()
     {
         return view('livewire.semester.semester-level-dues');
+    }
+
+    protected function getDuesStats($semester){
+
+        $duesStat = DuesSemester::withCount('semesterStudents')
+                    ->withSum([ 
+                        'semesterStudents as sumDebts' => function($query){
+                            $query->where('paid', '0');
+                    }], 'amount')
+                    ->withSum([ 
+                        'semesterStudents as sumIncome' => function($query){
+                            $query->where('paid', '1');
+                    }], 'amount')
+                    ->where('semester_id', $semester->id)
+                    ->get();
+
+        return $duesStat;
     }
 }

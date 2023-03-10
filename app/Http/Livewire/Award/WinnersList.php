@@ -22,6 +22,7 @@ class WinnersList extends Component
 
     protected function getCurrentWinners()
     {
+
         $this->winners = Award::with([
                             'lastestWinner' =>  function ($query) {
                                                     $query->select(['user_id', 'id', 'ballots.ballotable_type', 'ballots.ballotable_id', 'semester_id'])

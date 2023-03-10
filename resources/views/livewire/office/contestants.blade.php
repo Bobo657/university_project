@@ -2,26 +2,26 @@
     <div class="card px-4 pb-4 sm:px-5">
         <div class="my-3 flex h-8 items-center justify-between">
           <h2 class="font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100 lg:text-base">
-            Offices
+            Office Contestants
           </h2>
         </div>
         <div>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4"> 
-                <input wire:model="search"
+                <input wire:model.debounce="search"
                 class="form-input h-9 w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
                 placeholder="Student name"
                 type="text"
                 />
-                <div class="col-span-2">
+                <div class="col-span-2"> 
                     <div class="grid sm:grid-cols-3 px-0.5">
-                        <select wire:model="filter_semester_id" class="form-select h-9 w-full mr-2 rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                        <select wire:model.debounce="semesterId" class="form-select h-9 w-full mr-2 rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                             <option disabled value="">--- Select semester ----</option>
                             @foreach($semesters as $semester)
                             <option  value="{{ $semester->id}}">{{ $semester->duration}} </option>
                             @endforeach
                         </select>
 
-                        <select wire:model="filter_office_id" class="form-select h-9 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent ml-3">
+                        <select wire:model.debounce="filter_office_id" class="form-select h-9 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent ml-3">
                             <option disabled value="">--- Select contestant ----</option>
                             @foreach($offices as $office)
                             <option value="{{ $office->id }}">{{ $office->name }}</option>
@@ -70,6 +70,11 @@
                                             <a href="{{ $ballot->user->path ?? '#' }}"> 
                                                 {{ $ballot->user->full_name ?? 'n/a' }}
                                             </a>
+                                            @if($ballot->winner)
+                                            <span class="badge rounded-full text-xs h-4 border border-primary text-primary dark:border-accent-light dark:text-accent-light">
+                                                Winner
+                                              </span>
+                                            @endif
                                         </span>
                                     </div>
                                 </td>
@@ -84,7 +89,7 @@
                                 </td>
                                 <td class="whitespace-nowrap rounded-r-lg px-4 py-3 sm:px-5">
                                     {{ $ballot->created_at->format('m-d-Y') }}
-                                </td>
+                                </td> 
                                 <td class="whitespace-nowrap rounded-r-lg px-4 py-3 sm:px-5">
                                     <a href="#" wire:click.prevent="confirmDelete({{ $ballot->id }})" class="text-error">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="x" data-lucide="x" class="lucide lucide-x block mx-auto"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
@@ -95,12 +100,12 @@
                         </tbody>
                     </table>
                 </div>
-                @if($ballots->total()  > $no_of_records)
+                @if($ballots->total()  > $noOfRecords)
                 <div class="flex flex-col justify-between space-y-4 px-4 py-4 sm:flex-row sm:items-center sm:space-y-0 sm:px-5">
                     <div class="flex items-center space-x-2 text-xs+">
                         <span>Show</span>
                         <label class="block">
-                        <select wire:model="no_of_records" class="form-select rounded-full border border-slate-300 bg-white px-2 py-1 pr-6 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                        <select wire:model="noOfRecords" class="form-select rounded-full border border-slate-300 bg-white px-2 py-1 pr-6 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                             <option>10</option>
                             <option>30</option>
                             <option>50</option>

@@ -21,8 +21,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Semester::factory(1)->state(new Sequence(
-            ['duration' => '2010 - 2011', 'current' => true]
+        Semester::factory(2)->state(new Sequence(
+            ['duration' => '2010 - 2011'],
+            ['duration' => '2011 - 2021']
         ))
         ->create()
         ->each(function ($semester) {
@@ -75,6 +76,8 @@ class DatabaseSeeder extends Seeder
 
                 $random = random_int(1, 49);
             }
+
+           
         });
 
         \App\Models\User::all()->each(function ($user) {
@@ -117,6 +120,8 @@ class DatabaseSeeder extends Seeder
                                 inRandomOrder()->select('id')
                                 ->first()->id
             ]);
+
+            
         });
     }
 }

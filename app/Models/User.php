@@ -136,18 +136,18 @@ class User extends Authenticatable implements MustVerifyEmail
     public function addToActiveSemesterList() : void
     {
         $level = $this->last_level ? ((int)$this->last_level->level + 100) : 100;
-        $semester_id = Semester::active()->id;
-        $amount = DuesSemester::getSemesterLevelAmount($semester_id, $level);
+        $semesterId = cache('active_semester')->id;
+        $amount = DuesSemester::getSemesterLevelAmount($semesterId, $level);
 
         SemesterStudent::create([
             'user_id' => $this->id,
             'level' => $level,
             'amount' => $amount,
-            'semester_id' => $semester_id
+            'semester_id' => $semesterId
         ]);
     }
 
-    public function canAddToActiveSemesterList() : bool
+    public function canBeMarkedAsGraduated() : bool
     {
         return optional($this->last_level)->level == Semester::MAX_LEVEL;
     }

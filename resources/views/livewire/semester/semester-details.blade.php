@@ -2,12 +2,12 @@
     <div class="mt-6 flex flex-col items-center justify-between space-y-2 text-center sm:flex-row sm:space-y-0 sm:text-left">
         <div>
             <h3 class="text-xl font-semibold text-slate-700 dark:text-navy-100">
-            {{ $semester->duration}} Semester
+            {{ $semester->duration}} Semester   
             </h3>
         </div>
         <div>
-            @if($semester->current == 1)
-            <button wire:click.prevent="startEnrollment({{ $semester->id }})" class="btn space-x-2 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
+            @if($students->count() == 0)
+            <button wire:click.prevent="startStudentsEnrollment()" class="btn space-x-2 bg-primary font-medium text-white shadow-lg shadow-primary/50 hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                 </svg>
@@ -15,14 +15,14 @@
             </button>
             @endif
 
-            @if($semester->current == 1)
+            @if($students->count() > 0 && $semester->current == 1)
             <button wire:click.prevent="setSemesterToCompleted({{ $semester->id }})" class="btn space-x-2 bg-info font-medium text-white shadow-lg shadow-info/50 hover:bg-info-focus focus:bg-info-focus active:bg-info-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"  class="h-4 w-4" viewBox="0 0 24 24" width="24" height="24">
                     <path stroke="currentColor" d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
                     </svg>
                 <span>Mark as completed </span>
             </button>
-            @endif
+            @endif  
 
             @if($students->total()  == 0)
             <button wire:click.prevent="confirmDeleteSemeter({{$semester->id}})" class="btn space-x-2 bg-error font-medium text-white shadow-lg shadow-error/50 hover:bg-error-focus focus:bg-error-focus active:bg-error-focus/90 dark:bg-accent dark:shadow-accent/50 dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
@@ -108,8 +108,26 @@
 
             @livewire('semester.semester-level-dues', ['semester' => $semester->id])
         </div>
-
+       
         <div class="col-span-12 lg:col-span-8">
+            @if (session()->has('enrollement'))
+            <div class="bg-info/10 border-t-4 border-info rounded-b text-info px-4 py-3 shadow-md" role="alert">
+                <div class="flex">
+                    <div class="py-1">
+                        <svg class="fill-current h-6 w-6 text-info mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
+                    <div>
+                    <p class="font-bold">Students Enrollment completed </p>
+                    @if($noOfGraduated > 0)
+                        <p class="text-sm">{{ number_format($noOfGraduated) }} students was marked as graduated.</p>
+                    @endif
+                    @if($noOfGraduated > 0)
+                        <p class="text-sm">{{ number_format($noOfEnrolled) }} students was enrolled into the new semester.</p>
+                    @endif
+                    </div>
+                </div>
+            </div>
+            @endif
+
             <div class="col-span-12">
                 <div class="flex items-center justify-between">
                     <h2 class="text-base font-medium tracking-wide text-slate-700 line-clamp-1 dark:text-navy-100">
@@ -171,9 +189,11 @@
                                         <div class="avatar h-9 w-9">
                                             <img class="mask is-squircle" src="{{ $student->user->profile_photo_path }}" alt="avatar">
                                         </div>
-                                        <span class="font-medium text-slate-700 dark:text-navy-100">
-                                            {{ optional($student->user)->full_name }}
-                                        </span>
+                                        <a href="{{ optional($student->user)->path ?? '#' }}">
+                                            <span class="font-medium text-slate-700 dark:text-navy-100">
+                                                {{ optional($student->user)->full_name }}
+                                            </span>
+                                        </a>
                                     </div>
                                 </td>
                                 <td class="whitespace-nowrap px-4 py-3 sm:px-5">
@@ -194,6 +214,13 @@
                                 </td>
                             </tr>
                             @empty
+                            <tr  class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500">
+                                <td colspan="6" class="whitespace-nowrap px-4 py-3 sm:px-5"> 
+                                    <div class="flex justify-center items-center"> 
+                                    <span class="text-cool-gray-600 text"> No record found </span>
+                                    </div>
+                                </td>
+                            </tr>
                             @endforelse
                             
                         </tbody>
@@ -226,7 +253,6 @@
               </div>
         </div>
     </div>
-
 
     <x-delete_notification />
 </div>

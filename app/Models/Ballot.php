@@ -13,6 +13,10 @@ class Ballot extends Model
     use SoftDeletes;
 
     protected $fillable = ['user_id', 'ballotable_type', 'ballotable_id', 'semester_id'];
+    protected  $with = [
+        'semester:id,duration',
+        'user:id,middle_name,last_name,first_name,gender'
+    ];
 
     public function ballotable()
     {

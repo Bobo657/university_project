@@ -3,9 +3,9 @@
 namespace App\Http\Livewire\Office;
 
 use App\Models\Office;
-use App\Models\Semester;
 use App\Models\User;
 use Livewire\Component;
+use PhpParser\Node\Stmt\TryCatch;
 
 class AddOfficeContestant extends Component
 {
@@ -27,19 +27,28 @@ class AddOfficeContestant extends Component
 
     public function addContestant()
     {
-        $this->validate();
-        $this->office->ballots()->create([
-            'user_id' => User::firstWhere('reg_no', $this->reg_no)->id,
-            'semester_id' =>  Semester::active()->id,
-        ]);
+        
+        $validatedData = $this->validate();
 
-        $this->showModal = false;
-        $this->reset();
-        $this->dispatchBrowserEvent('display-notification', [
-            'message' => 'Student has been added as successfully'
-        ]);
+        try{
+            $user = User::firstWhere('reg_no', $validatedData['reg_no']);
+            $this->office->ballots()->create([
+                'user_id' => $user->id,
+                'semester_id' =>  cache('active_semester')->id
+            ]);
 
-        $this->emit('office_updated');
+            $this->reset(['reg_no']);
+            $this->showModal = false;
+            $this->dispatchBrowserEvent('display-notification', [
+                'message' => 'Student has been added as successfully'
+            ]);
+
+            $this->emit('office_updated');
+        }
+        catch (\Exception $e) {
+            dd($e->getMessage());
+           // $this->addError('key', 'message')
+        } 
     }
 
     public function render()

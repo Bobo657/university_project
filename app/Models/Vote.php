@@ -10,6 +10,12 @@ class Vote extends Model
 {
     use HasFactory;
 
+    protected $with = [
+        'semester:id,duration',
+        'voteOwner:users.id,first_name,last_name,middle_name,profile_photo_path,gender',
+        'voter:users.id,first_name,last_name,middle_name,profile_photo_path,gender'
+    ]; 
+
     public function ballot(){
         return $this->belongsTo(Ballot::class);
     }

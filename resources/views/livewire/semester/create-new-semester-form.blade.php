@@ -1,4 +1,4 @@
-<div class="col-span-12 grid lg:col-span-8">
+<div class="col-span-12 grid lg:col-span-8 mt-4">
     <div class="card">
       <div
         class="border-b border-slate-200 p-4 dark:border-navy-500 sm:px-5"
@@ -37,7 +37,7 @@
             @enderror
         </label>
         
-        <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+        <div class="grid grid-cols-2 gap-4 sm:grid-cols-2">
             @foreach($levels as $level)
                 <label class="block" x-data="{
                     config:{

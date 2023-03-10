@@ -785,7 +785,7 @@
               </a>
            
               <div class="mt-3 px-4">
-                <form method="POST" action=" route('logout') }}">
+                <form method="POST" action="{{ route('logout') }}">
                   @csrf()
                 <button onclick="event.preventDefault(); this.closest('form').submit();" class="btn h-9 w-full space-x-2 bg-primary text-white hover:bg-primary-focus focus:bg-primary-focus active:bg-primary-focus/90 dark:bg-accent dark:hover:bg-accent-focus dark:focus:bg-accent-focus dark:active:bg-accent/90">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

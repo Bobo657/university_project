@@ -21,7 +21,7 @@
                 />
                 <div class="col-span-2">
                     <div class="grid sm:grid-cols-3 px-0.5">
-                        <select wire:model="semester" class="form-select h-9 w-full mr-2 rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                        <select wire:model="semesterId" class="form-select h-9 w-full mr-2 rounded-lg border border-slate-300 bg-white px-3 py-2 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                             <option disabled value="">--- Select semester ----</option>
                             @foreach($semesters as $semester)
                             <option  value="{{ $semester->id}}">{{ $semester->duration}} </option>
@@ -66,7 +66,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($votes as $vote)
+                            @forelse($votes as $vote)
                             <tr>
                                 <td class="whitespace-nowrap px-4 py-3 sm:px-5">
                                     <div class="flex items-center space-x-4">
@@ -108,16 +108,24 @@
                                     </a>
                                 </td>
                             </tr>
-                            @endforeach
+                            @empty
+                                <tr  class="border-y border-transparent border-b-slate-200 dark:border-b-navy-500">
+                                    <td colspan="6" class="whitespace-nowrap px-4 py-3 sm:px-5"> 
+                                        <div class="flex justify-center items-center"> 
+                                        <span class="text-cool-gray-600 text"> No record found </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
-                @if($votes->total()  > $no_of_records)
+                @if($votes->total()  > $noOfRecords)
                 <div class="flex flex-col justify-between space-y-4 px-4 py-4 sm:flex-row sm:items-center sm:space-y-0 sm:px-5">
                     <div class="flex items-center space-x-2 text-xs+">
                         <span>Show</span>
                         <label class="block">
-                        <select wire:model="no_of_records" class="form-select rounded-full border border-slate-300 bg-white px-2 py-1 pr-6 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
+                        <select wire:model="noOfRecords" class="form-select rounded-full border border-slate-300 bg-white px-2 py-1 pr-6 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:bg-navy-700 dark:hover:border-navy-400 dark:focus:border-accent">
                             <option>10</option>
                             <option>30</option>
                             <option>50</option>

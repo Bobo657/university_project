@@ -8,36 +8,36 @@ use Livewire\Component;
 class CreatedOfficeList extends Component
 {
     public $offices;
-    public $selected_record_id;
+    public $selectedOfficeId;
 
     protected $listeners = [
-        'office_updated' => 'getOffices',
-        'removeSelectedOffice' => 'deleteRecord'
+        'office_updated' => 'refreshOffices',
+        'removeSelectedOffice' => 'deleteOffice'
     ];
 
     public function mount()
     {
-        $this->getOffices();
+        $this->refreshOffices();
     }
 
     public function confirmDelete($record_id)
     {
-        $this->selected_record_id = $record_id;
+        $this->selectedOfficeId = $record_id;
         $this->dispatchBrowserEvent('delete-notify', ['action' => 'removeSelectedOffice']);
     }
 
-    public function deleteRecord()
+    public function deleteOffice()
     {
-        Office::findOrFail($this->selected_record_id)->delete();
+        Office::findOrFail($this->selectedOfficeId)->delete();
         $this->dispatchBrowserEvent('display-notification', [
-            'message' => 'Office has been delete successfully'
+            'message' => 'Office has been deleted successfully'
         ]);
 
-        $this->reset('selected_record_id');
-        $this->getOffices();
+        $this->reset('selectedOfficeId');
+        $this->refreshOffices();
     }
 
-    public function getOffices()
+    public function refreshOffices()
     {
         $this->offices = Office::select(['name', 'id'])->withCount(['ballots', 'votes'])->get();
     }

@@ -7,17 +7,18 @@ use Livewire\WithPagination;
 use App\Models\Award;
 use App\Models\Ballot;
 use App\Models\Semester;
+use App\Traits\TableWithFilters;
 
 class NomineesAwardList extends Component
 {
-    use WithPagination;
+    use TableWithFilters;
 
-    protected $listeners = ['removeSelectedNominee' => 'deleteRecord'];
-    public $selected_record_id;
-    public $search;
+    protected $listeners = ['removeSelectedNominee' => 'deleteNominee'];
+    protected $actions = ['action' => 'removeSelectedNominee'];
+    protected $resetProperties = ['search', 'noOfRecords', 'filter_semester_id', 'filter_award_id', 'search'];
+
     public $semesters;
     public $awards;
-    public $no_of_records = 20;
     public $filter_semester_id = "";
     public $filter_award_id = "";
 
@@ -27,43 +28,20 @@ class NomineesAwardList extends Component
         $this->awards = Award::select(['id', 'name'])->get();
     }
 
-    public function resetParameters()
+    public function deleteNominee()
     {
-        $this->resetPage();
-        $this->reset(['filter_semester_id', 'filter_award_id', 'search']);
-    }
-
-    public function updatingSearch()
-    {
-        $this->resetPage();
-    }
-
-    public function updatingNoOfRecords()
-    {
-        $this->resetPage();
-    }
-
-    public function confirmDelete($record_id)
-    {
-        $this->selected_record_id = $record_id;
-        $this->dispatchBrowserEvent('delete-notify', ['action' => 'removeSelectedNominee']);
-    }
-
-    public function deleteRecord()
-    {
-        Ballot::findOrFail($this->selected_record_id)->delete();
+        Ballot::findOrFail($this->recordId)->delete();
         $this->dispatchBrowserEvent('display-notification', [
-            'message' => 'Award nominee has been delete successfully'
+            'message' => 'Award nominee has been deleted successfully'
         ]);
-        $this->reset('selected_record_id');
+
+        $this->reset('recordId');
     }
 
     public function render()
     {
-        $ballots =  Ballot::awardNominees()->with([
-                        'semester:id,duration',
-                        'user:id,middle_name,last_name,first_name,gender'
-                    ])
+        $ballots =  Ballot::awardNominees()
+                    ->with('ballotable:name,id')
                     ->withCount('votes')
                     ->when(!empty($this->search), function ($q) {
                         return $q->whereHas('user', function ($query) {
@@ -78,7 +56,7 @@ class NomineesAwardList extends Component
                     ->when(!empty($this->filter_award_id), function ($q) {
                         return $q->where('ballotable_id', $this->filter_award_id);
                     })
-                    ->paginate($this->no_of_records);
+                    ->paginate($this->noOfRecords);
 
         return view('livewire.award.nominees-award-list', ['ballots' => $ballots ]);
     }

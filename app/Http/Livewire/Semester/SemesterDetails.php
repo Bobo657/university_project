@@ -20,6 +20,8 @@ class SemesterDetails extends Component
     public $level;
     public $record;
     public $redirect;
+    public $noOfGraduated = 0;
+    public $noOfEnrolled = 0;
 
     public function mount(Semester $semester)
     {
@@ -71,19 +73,25 @@ class SemesterDetails extends Component
         $semester->markAsCompleted();
     }
 
-    public function startEnrollment()
+    public function startStudentsEnrollment()
     {
-        $students = User::haveNotGraduated()->get();
+        
+        $students = User::haveNotGraduated()->with('last_level')->get();
         $students->each(function ($student){
-            try 
-            {
-                // code that may raise an exception
-                $student->canAddToActiveSemesterList() ?  $student->markAsGraduated() : $student->addToActiveSemesterList();
+            if($student->canBeMarkedAsGraduated()){
+                $student->markAsGraduated();
+               return $this->noOfGraduated += 1;
+            }
+
+            try {
+               $student->addToActiveSemesterList();
+               $this->noOfEnrolled += 1;
             } catch (\Exception $e) {
-                dd($e->getMessage());
+                //dd($e->getMessage());
             } 
         });
 
+        session()->flash('enrollement', 'Enrollenment has been completed');
     }
 
     public function render()
